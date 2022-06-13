@@ -10,6 +10,8 @@ import { EmployeeInfoComponent } from './employee/employee-info/employee-info.co
 import { LoginComponent } from './users/login/login.component';
 import { LogoutComponent } from './users/logout/logout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ViewAllReimbursementsComponent } from './reimbursements/view-all-reimbursements/view-all-reimbursements.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EmployeeInfoComponent,
     LoginComponent,
     LogoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    ViewAllReimbursementsComponent
   ],
   imports: [
     BrowserModule,
