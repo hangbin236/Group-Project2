@@ -9,7 +9,9 @@ import { ViewMyReimbursementsComponent } from './reimbursements/view-my-reimburs
 import { EmployeeInfoComponent } from './employee/employee-info/employee-info.component';
 import { LoginComponent } from './users/login/login.component';
 import { LogoutComponent } from './users/logout/logout.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ViewAllReimbursementsComponent } from './reimbursements/view-all-reimbursements/view-all-reimbursements.component';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ViewAllReimbursementsComponent } from './reimbursements/view-all-reimbu
     EmployeeInfoComponent,
     LoginComponent,
     LogoutComponent,
+    DashboardComponent,
     ViewAllReimbursementsComponent
   ],
   imports: [
