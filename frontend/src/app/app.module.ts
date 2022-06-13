@@ -9,6 +9,7 @@ import { ViewMyReimbursementsComponent } from './reimbursements/view-my-reimburs
 import { EmployeeInfoComponent } from './employee/employee-info/employee-info.component';
 import { LoginComponent } from './users/login/login.component';
 import { LogoutComponent } from './users/logout/logout.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LogoutComponent } from './users/logout/logout.component';
     ViewMyReimbursementsComponent,
     EmployeeInfoComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
