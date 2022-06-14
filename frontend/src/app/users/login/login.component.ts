@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { last } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import { UsersService } from '../users.service';
+
 
 @Component({
   selector: 'login',
@@ -11,20 +13,6 @@ import { UsersService } from '../users.service';
 })
 export class LoginComponent implements OnInit {
 
-  // invalidMessage: string = "";
-
-  // user: User = {
-  //   id: 0,
-  //   password: '',
-  //   jobCode: 0,
-  //   firstName: '',
-  //   lastName: '',
-  //   email: ''
-  // }
-
-  // constructor(private userService: UsersService,
-  //   private authService: AuthService,
-  //   private router: Router) { }
 
   constructor(){}
 
