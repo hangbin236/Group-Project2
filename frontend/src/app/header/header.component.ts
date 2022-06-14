@@ -8,17 +8,18 @@ import { AuthService } from '../users/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  // constructor(private authService: AuthService) { }
+  constructor(){}
 
   ngOnInit(): void {
   }
 
-  hasLoggedIn(){
-    return this.authService.isLoggedIn;
-  }
+  // hasLoggedIn(){
+  //   return this.authService.isLoggedIn;
+  // }
 
-  getJobCode(){
-    return this.authService.jobCode;
-  }
+  // getJobCode(){
+  //   return this.authService.jobCode;
+  // }
 
 }

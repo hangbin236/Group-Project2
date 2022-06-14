@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: "view-my-reimbursements", component: ViewMyReimbursementsComponent },
   { path: "view-all-reimbursements", component: ViewAllReimbursementsComponent },
   { path: "employee-info", component: EmployeeInfoComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "", component: LoginComponent }
   
 ];
 

@@ -11,57 +11,59 @@ import { UsersService } from '../users.service';
 })
 export class LoginComponent implements OnInit {
 
-  invalidMessage: string = "";
+  // invalidMessage: string = "";
 
-  user: User = {
-    id: 0,
-    password: '',
-    jobCode: 0,
-    firstName: '',
-    lastName: '',
-    email: ''
-  }
+  // user: User = {
+  //   id: 0,
+  //   password: '',
+  //   jobCode: 0,
+  //   firstName: '',
+  //   lastName: '',
+  //   email: ''
+  // }
 
-  constructor(private userService: UsersService,
-    private authService: AuthService,
-    private router: Router) { }
+  // constructor(private userService: UsersService,
+  //   private authService: AuthService,
+  //   private router: Router) { }
+
+  constructor(){}
 
   ngOnInit(): void {
   }
 
-  loginValidation(){
-    this.userService.validateUser(this.user).subscribe((response)=>{
-      console.log(response);
-      if(response.jobCode != 0 ){
+  // loginValidation(){
+  //   this.userService.validateUser(this.user).subscribe((response)=>{
+  //     console.log(response);
+  //     if(response.jobCode != 0 ){
 
-        // login success
-        // send the respone to auth service and store the info in the session storage
-        this.authService.storeUserInfo(response);
+  //       // login success
+  //       // send the respone to auth service and store the info in the session storage
+  //       this.authService.storeUserInfo(response);
 
-        // also set the isLoggedIn variable of auth service to true
-        this.authService.isLoggedIn = true;
+  //       // also set the isLoggedIn variable of auth service to true
+  //       this.authService.isLoggedIn = true;
 
-        if(response.jobCode == 200){
+  //       if(response.jobCode == 200){
             
-            this.authService.jobCode=200;
+  //           this.authService.jobCode=200;
             
-            this.router.navigate(['employee-info']);
+  //           this.router.navigate(['employee-info']);
 
-        }else if(response.jobCode == 100){
+  //       }else if(response.jobCode == 100){
             
-            this.authService.jobCode=100;
+  //           this.authService.jobCode=100;
             
-            this.router.navigate(['employee-info']);
-        }
-      }else{
-        // login failed
-        // stay back in this component and display
-            // an error message on the the template
-        this.invalidMessage = "Invalid Username/Password";
-      }
+  //           this.router.navigate(['employee-info']);
+  //       }
+  //     }else{
+  //       // login failed
+  //       // stay back in this component and display
+  //           // an error message on the the template
+  //       this.invalidMessage = "Invalid Username/Password";
+  //     }
     
-    });
-  }
+  //   });
+  // }
 
 
 

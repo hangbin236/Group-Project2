@@ -12,8 +12,8 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  validateUser(user: User): Observable<User>{
-    return this.http.post<User>(this.baseUrl, user);
+  // validateUser(user: User): Observable<User>{
+  //   return this.http.post<User>(this.baseUrl, user);
 
-  }
+  // }
 }
