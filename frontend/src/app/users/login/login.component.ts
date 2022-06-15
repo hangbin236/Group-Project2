@@ -1,58 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-import { last } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { Form } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { UsersService } from '../services/users.service';
 import { User } from '../user.model';
-import { UsersService } from '../users.service';
-
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
+  user: User = {
+    empId: 0,
+    password: '',
+    jobCode: 0,
+    fname: '',
+    lname: '',
+    email: '',
+}
 
-  constructor(){}
+  constructor(
+    private userService: UsersService,
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
 
-  // loginValidation(){
-  //   this.userService.validateUser(this.user).subscribe((response)=>{
-  //     console.log(response);
-  //     if(response.jobCode != 0 ){
 
-  //       // login success
-  //       // send the respone to auth service and store the info in the session storage
-  //       this.authService.storeUserInfo(response);
+  logInUser() {
+    // access form data
+    let formData = new FormData();
+    formData.append('email', this.user.email);
+    formData.append('password', this.user.password);
 
-  //       // also set the isLoggedIn variable of auth service to true
-  //       this.authService.isLoggedIn = true;
-
-  //       if(response.jobCode == 200){
-            
-  //           this.authService.jobCode=200;
-            
-  //           this.router.navigate(['employee-info']);
-
-  //       }else if(response.jobCode == 100){
-            
-  //           this.authService.jobCode=100;
-            
-  //           this.router.navigate(['employee-info']);
-  //       }
-  //     }else{
-  //       // login failed
-  //       // stay back in this component and display
-  //           // an error message on the the template
-  //       this.invalidMessage = "Invalid Username/Password";
-  //     }
-    
-  //   });
-  // }
-
-
+    // process formData for validation
+    this.userService.getUserInfo(formData).subscribe(
+      (response) => {
+        console.log(response);
+        this.user = response;
+        this.authService.storeUserSession(response);
+        this.router.navigateByUrl('user-account');
+      },
+      (error) => console.log(error)   
+    );
+  }
 
 }
