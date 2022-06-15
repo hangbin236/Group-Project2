@@ -27,43 +27,41 @@ export class LoginComponent implements OnInit {
 
   // constructor removes the login form, need to fix
 
-  // constructor(private userService: UsersService,
-  //   private authService: AuthService,
-  //   private router: Router) { }
+  constructor(private userService: UsersService,
+    private authService: AuthService,
+    private router: Router) { }
 
-
-
-  constructor(){}
+  // constructor(){}
 
   ngOnInit(): void {
   }
 
-  // loginValidation(){
-  //   this.userService.validateUser(this.user).subscribe((response)=>{
-  //     console.log(response);
-  //     if(response.jobCode != 0 ){
+  loginValidation(){
+    this.userService.validateUser(this.user).subscribe((response)=>{
+      console.log(response);
+      if(response.jobCode != 0 ){
 
-  //       this.authService.storeUserInfo(response);
+        this.authService.storeUserInfo(response);
 
         
-  //       this.authService.isLoggedIn = true;
+        this.authService.isLoggedIn = true;
 
-  //       if(response.jobCode == 200){
+        if(response.jobCode == 200){
             
-  //           this.authService.jobCode=200;
+            this.authService.jobCode=200;
             
-  //           this.router.navigate(['employee-info']);
+            this.router.navigate(['employee-info']);
 
-  //       }else if(response.jobCode == 100){
+        }else if(response.jobCode == 100){
             
-  //           this.authService.jobCode=100;
+            this.authService.jobCode=100;
             
-  //           this.router.navigate(['employee-info']);
-  //       }
-  //     }else{this.invalidMessage = "Invalid Username/Password";}
+            this.router.navigate(['employee-info']);
+        }
+      }else{this.invalidMessage = "Invalid Username/Password";}
     
-  //   });
-  // }
+    });
+  }
 
 
 

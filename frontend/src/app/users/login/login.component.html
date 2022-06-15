@@ -1,8 +1,11 @@
 <!-- <body onloadstart="checkAuthentication()">
   <main class=" vh-100 bg-primary bg-gradient">-->
+
+
 <div class="container py-5 h-100">
-    <form id="loginForm" 
-          action="dashboard.html" 
+    <form #myForm="ngForm"
+          id="loginForm" 
+          action="dashboard.html"
           method="get" 
           class="row  h-80">
       <div class="d-flex justify-content-center align-items-center ">
@@ -21,21 +24,37 @@
 
                 <div class="form-outline form-white mb-4">
                   <input type="email" 
-                         id="email" 
-                         name="email" 
                          class="form-control form-control-lg"
+
+                         id="email"
+                         placeholder="Email Here..." 
+                         name="email"
+                         [(ngModel)]="user.email"                           
+                         required
+                         #usEmail="ngModel">
+                      <div *ngIf="!usEmail.valid && usEmail.touched" class="text-danger small">
+                        Email is required!
+                      </div>
+
                          placeholder="Email Here..."
                          required />
+
                 </div>
                 <div class="form-outline form-white mb-4">
                   <input type="password" 
-                         id="password" 
-                         name="password" 
                          class="form-control form-control-lg"
+                         id="password"
                          placeholder="Password Here..." 
-                         required />
+                         name="password"                
+                         [(ngModel)]="user.password" 
+                         required
+                         #usPassword="ngModel">
+                         <div *ngIf="!usPassword.valid && usPassword.touched" class="text-danger small">
+                          Password is required!
+                        </div>
                 </div>
-                <button class="btn btn-outline-light btn-lg px-5 mb-3" type="submit">Login</button>
+                <button class="btn btn-primary btn-lg px-5 mb-3" type="submit" (click)="loginValidation()"
+                      [disabled]="!myForm.valid">Login</button>
               </div>
             </div>
           </div>
@@ -43,4 +62,8 @@
       </div>
     </form>
   </div>
-  <!--</body>-->
+  <!--</body> 
+  
+  outline-light
+
+-->
