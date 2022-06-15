@@ -17,7 +17,10 @@ export class AuthService {
   }
 
   retreiveUserInfo(): void{
-    //return JSON.parse(sessionStorage.getItem("userInformation"));
+    let userData: any = sessionStorage.getItem("userInformation");
+    if(userData!=null){
+      return JSON.parse(userData);
+    }
   }
 
   removeUserInfo(): void{
