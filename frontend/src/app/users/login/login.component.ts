@@ -46,13 +46,13 @@ export class LoginComponent implements OnInit {
         
         this.authService.isLoggedIn = true;
 
-        if(response.jobCode == 200){
+        if(response.jobCode == 200){ // if manager
             
-            this.authService.jobCode=200;
+            this.authService.jobCode=200; 
             
             this.router.navigate(['employee-info']);
 
-        }else if(response.jobCode == 100){
+        }else if(response.jobCode == 100){ // if employee
             
             this.authService.jobCode=100;
             

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersService {
 
-  baseUrl: string = "http://localhost:7474/users"; // ednpoint from backend, may change
+  baseUrl: string = "http://localhost:7474/users"; // endpoint from backend, may change
 
   constructor(private http: HttpClient) { }
 
