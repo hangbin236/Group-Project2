@@ -12,6 +12,25 @@ import { UsersService } from '../users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+
+  invalidMessage: string = "";
+
+  user: User = {
+    id: 0,
+    password: '',
+    jobCode: 0,
+    firstName: '',
+    lastName: '',
+    email: ''
+  }
+
+  // constructor removes the login form, need to fix
+
+  // constructor(private userService: UsersService,
+  //   private authService: AuthService,
+  //   private router: Router) { }
+
 
 
   constructor(){}
@@ -24,11 +43,9 @@ export class LoginComponent implements OnInit {
   //     console.log(response);
   //     if(response.jobCode != 0 ){
 
-  //       // login success
-  //       // send the respone to auth service and store the info in the session storage
   //       this.authService.storeUserInfo(response);
 
-  //       // also set the isLoggedIn variable of auth service to true
+        
   //       this.authService.isLoggedIn = true;
 
   //       if(response.jobCode == 200){
@@ -43,12 +60,7 @@ export class LoginComponent implements OnInit {
             
   //           this.router.navigate(['employee-info']);
   //       }
-  //     }else{
-  //       // login failed
-  //       // stay back in this component and display
-  //           // an error message on the the template
-  //       this.invalidMessage = "Invalid Username/Password";
-  //     }
+  //     }else{this.invalidMessage = "Invalid Username/Password";}
     
   //   });
   // }

@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersService {
 
-  baseUrl: string = "http://localhost:7474/users";
+  baseUrl: string = "http://localhost:7474/users"; // ednpoint from backend, may change
 
   constructor(private http: HttpClient) { }
 
-  // validateUser(user: User): Observable<User>{
-  //   return this.http.post<User>(this.baseUrl, user);
+  validateUser(user: User): Observable<User>{
+    return this.http.post<User>(this.baseUrl, user);
 
-  // }
+  }
 }
