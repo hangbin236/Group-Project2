@@ -6,27 +6,21 @@ import { User } from './user.model';
 })
 export class AuthService {
 
-  // the prupose of this service is to set, get and remove a session storage item
-  // also it will help to know is a user logged in or not
-  // also it will help to know the role of the user who has logged in
+  isLoggedIn: boolean = false;
 
-  // varibale which tells whether a user is logged in or not
-//   isLoggedIn: boolean = false;
+  jobCode: number = 0;
 
-//   //variable which tells the role of the user who has logged in
-//   jobCode: number = 0;
+  constructor() { }
 
-//   constructor() { }
+  storeUserInfo(user: User): void{
+    sessionStorage.setItem("userInformation", JSON.stringify(user));
+  }
 
-//   storeUserInfo(user: User): void{
-//     sessionStorage.setItem("userInformation", JSON.stringify(user));
-//   }
+  retreiveUserInfo(): void{
+    //return JSON.parse(sessionStorage.getItem("userInformation"));
+  }
 
-//   retreiveUserInfo(): void{
-//     //return JSON.parse(sessionStorage.getItem("userInformation"));
-//   }
-
-//   removeUserInfo(): void{
-//     sessionStorage.removeItem("userInformation");
-//   }
+  removeUserInfo(): void{
+    sessionStorage.removeItem("userInformation");
+  }
  }
