@@ -13,7 +13,7 @@ import { UsersService } from '../users.service';
 })
 export class LoginComponent implements OnInit {
   
-cjd-branch-1
+
   invalidMessage: string = "";
 
   user: User = {
