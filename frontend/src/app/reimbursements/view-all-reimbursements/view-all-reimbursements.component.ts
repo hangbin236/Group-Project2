@@ -31,6 +31,11 @@ export class ViewAllReimbursementsComponent implements OnInit {
     this.currentAllReimbursements = this.reimbursementService.getAllReimbursements();
   }
 
+
+  
+
+
+
   displayReimbursementsForm(){
     if(this.shouldDisplay){
       this.shouldDisplay = false;

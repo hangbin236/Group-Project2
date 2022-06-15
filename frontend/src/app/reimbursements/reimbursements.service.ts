@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Reimbursements } from './reimbursements.model';
 
 @Injectable({
@@ -6,6 +8,13 @@ import { Reimbursements } from './reimbursements.model';
 })
 export class ReimbursementsService {
 
+  // baseUrl: string = "http://localhost:5555/api/reimbursements" // endpoint from backend, may change
+
+  constructor(private http: HttpClient) { }
+
+
+
+  // this array will be removed once we connect to the backend
   allReimbursements: Reimbursements[] = [
     {
       id: 1,
@@ -38,9 +47,23 @@ export class ReimbursementsService {
 
   ];
 
+      // this will replace the function below
+
+  // getAllReimbursements(): Observable<Reimbursements[]>{
+  //   return this.http.get<Reimbursements[]>(this.baseUrl)
+  // }
+
   getAllReimbursements(): Reimbursements[]{
     return this.allReimbursements;
   }
+
+
+  
+      // this will replace the function below
+
+  // addNewReimbursement(newReimbursement: Reimbursements): Observable<Reimbursements>{
+  //   return this.http.post<Reimbursements>(this.baseUrl, newReimbursement)
+  // }
 
   addNewReimbursement(newReimbursement: Reimbursements): Reimbursements[]{
     let generatedReimbursementId: number = this.allReimbursements[this.allReimbursements.length-1].id + 1;
@@ -57,5 +80,5 @@ export class ReimbursementsService {
     
   }
 
-  constructor() { }
+  
 }
