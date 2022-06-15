@@ -1,9 +1,13 @@
 export interface User{
-    id: number,
-    password: string,
-    jobCode: number,
-    firstName: string,
-    lastName: string,
-    email: string
+
+    
+        id: 0,
+        password: '',
+        jobCode: 0,
+        firstName: '',
+        lastName: '',
+        email: ''
+      
     
 }
+
