@@ -27,13 +27,13 @@ INSERT INTO employee_details(password, job_code, fname, lname, email)
 VALUES (crypt('password123',gen_salt('bf')), 100, 'John', 'Smith', 'jsmith@gmail.com');
 
 INSERT INTO employee_details(password, job_code, fname, lname, email) 
-VALUES (crypt('password456',gen_salt('bf')), 100, 'Mark', 'Johnson', 'mjohnson@gmail.com');
+VALUES (crypt('password123',gen_salt('bf')), 100, 'Mark', 'Johnson', 'mjohnson@gmail.com');
 
 INSERT INTO employee_details(password, job_code, fname, lname, email) 
-VALUES (crypt('password789',gen_salt('bf')), 100, 'Sally', 'Silverton', 'ss@gmail.com');
+VALUES (crypt('password123',gen_salt('bf')), 100, 'Sally', 'Silverton', 'ss@gmail.com');
 
 INSERT INTO employee_details(password, job_code, fname, lname, email) 
-VALUES (crypt('MrManager',gen_salt('bf')), 200, 'Mr', 'Manager', 'mm@gmail.com');
+VALUES (crypt('root',gen_salt('bf')), 200, 'Mr', 'Manager', 'mm@gmail.com');
 
 INSERT INTO reimbursement_details(rb_status, rb_amount, rb_timestamp, emp_id) 
 VALUES ('pending', 100.00, current_timestamp, 1);
