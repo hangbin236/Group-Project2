@@ -1,4 +1,46 @@
-<div class="container mt-3">
+
+  <div class="container mt-3">
+    <h2>All Reimbursement Requests (from array)</h2>
+                
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>Reimbursement ID</th>
+          <th>Request Date</th>
+          <th>Request Amount</th>
+          <th>Request Status</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reimbursement of currentAllReimbursements">
+          <td>{{ reimbursement.id }}</td>
+          <td>{{ reimbursement.rbTimestamp }}</td>
+          <td>${{ reimbursement.rbAmount }}</td>
+          <td>{{ reimbursement.rbStatus }}</td>
+          <td>
+            <button 
+            type="button"
+            class="btn btn-success">Approve</button>
+          </td>
+          <td>
+            <button 
+            type="button"
+            class="btn btn-danger">Deny</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+<!-- 
+
+  test data
+
+
+  <div class="container mt-3">
     <h2>All Reimbursement Requests</h2>
                 
     <table class="table table-dark table-striped">
@@ -63,4 +105,4 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->

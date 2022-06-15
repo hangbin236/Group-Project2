@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'logout',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+    this.authService.removeUserInfo();
+
+    this.authService.isLoggedIn = false;
+
+    this.authService.jobCode = 0;
+
+    this.router.navigate(['login']);
+
   }
 
 }
