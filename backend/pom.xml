@@ -51,7 +51,58 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 			</plugin>
+			<!-- when we want to run a jar -->
+			<!-- this plugin helps to create a jar file that can be executed, by specifying the class which has the main method -->
+			<plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-jar-plugin</artifactId>
+	            <version>3.1.1</version>
+	            <configuration>
+	                <archive>
+	                    <manifest>
+	                        <mainClass>BookCrud</mainClass>
+	                    </manifest>
+	                </archive>
+	            </configuration>
+	        </plugin>
+	        
+	        <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <version>1.6.0</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>exec</goal>
+                      </goals>
+                  </execution>
+              </executions>
+              <configuration>
+                  <executable>java</executable>
+                  <arguments>
+                    <argument>-classpath</argument>
+                    <!-- automatically creates the classpath using all project dependencies,
+                         also adding the project build directory -->
+                    <classpath/>
+                    <argument>com.appurist.JavalinTest</argument>
+                  </arguments>
+              </configuration>
+          </plugin>
+          
+          <!-- this plugin is required to compress all the dependencies specified in pom.xml into the jar file -->
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-shade-plugin</artifactId>
+              <version>3.3.0</version>
+              <executions>
+                  <execution>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>shade</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
 		</plugins>
 	</build>
-
 </project>

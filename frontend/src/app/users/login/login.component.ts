@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { last } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import { UsersService } from '../users.service';
+
 
 @Component({
   selector: 'login',
@@ -10,7 +12,8 @@ import { UsersService } from '../users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
+cjd-branch-1
   invalidMessage: string = "";
 
   user: User = {
@@ -27,6 +30,8 @@ export class LoginComponent implements OnInit {
   // constructor(private userService: UsersService,
   //   private authService: AuthService,
   //   private router: Router) { }
+
+
 
   constructor(){}
 
