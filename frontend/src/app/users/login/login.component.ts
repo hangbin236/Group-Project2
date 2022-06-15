@@ -13,9 +13,9 @@ import { User } from '../user.model';
 export class LoginComponent implements OnInit {
 
   user: User = {
-    empId: 0,
+    emp_id: 0,
     password: '',
-    jobCode: 0,
+    job_code: 0,
     fname: '',
     lname: '',
     email: '',

@@ -14,14 +14,15 @@ export class AuthService {
   storeUserSession(user: User): void {
     sessionStorage.setItem("auth", JSON.stringify(user));
     this.isLoggedIn = true;
-    this.jobCode = user.jobCode;
+    this.jobCode = user.job_code;
   }
 
-  getUserInfo(): void{ 
-    let userData: any = sessionStorage.getItem("userInformation");
+  getUserInfo(): any { 
+    let userData: any = sessionStorage.getItem("auth");
     if(userData!=null){
       return JSON.parse(userData);
     }
+    return null;
   }
 
   endUserSession(): void {

@@ -1,7 +1,7 @@
 export interface User{
-    empId: number,
+    emp_id: number,
     password: string,
-    jobCode: number,
+    job_code: number,
     fname: string,
     lname: string,
     email: string,

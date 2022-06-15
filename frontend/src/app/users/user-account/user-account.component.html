@@ -49,10 +49,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
+
 
             <!-- Nav Item - Employees-->
             <li class="nav-item">
@@ -63,11 +60,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
 
 
         </ul>
@@ -81,11 +73,6 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
 
                     <!-- Topbar Search -->
                     <form
@@ -218,9 +205,48 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="...">
+                                            src="assets/img/undraw_posting_photo.svg" alt="...">
                                     </div>
-                                    <p id="employeeInfo"></p>
+                                    <div id="employeeInfo">
+                                        <div *ngIf="user == null && userInfoPending; else elseBlock">
+                                            <i class="fas fa-cog fa-spin"></i> Loading...
+                                        </div>
+                                        <ng-template #elseBlock>
+                                            <table #elseBlock class="table table-hover">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">Employee ID</th>
+                                                    <th scope="col">Job Code</th>
+                                                    <th scope="col">First Name</th>
+                                                    <th scope="col">Last Name</th>
+                                                    <th scope="col">Email</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <th scope="row">{{user.emp_id}}</th>
+                                                    <td>{{user.job_code}}</td>
+                                                    <td>{{user.fname}}</td>
+                                                    <td>{{user.lname}}</td>
+                                                    <td>{{user.email}}</td>
+                                                  </tr>
+                                                </tbody>
+                                            </table>
+                                        </ng-template>
+                          
+                                        <!--button 
+                                            class="btn btn-primary float-right mt-4"
+                                            data-toggle="modal" data-target="#employeeModal"
+                                            ">
+                                            Update
+                                        </-->
+                                        <button
+                                            class="btn btn-primary float-right"
+                                            data-toggle="modal" data-target="#employeeModal"
+                                        >
+                                            Update
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -276,7 +302,70 @@
     </div>
 
     <!-- Update Employee Modal -->
-    <div id="EmpModal"></div>
+    <div id="EmpModal" *ngIf="user != null" >
+
+        <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="requestModalLabel">Update Employee Info</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="employeeInfoForm">
+                    <div class="form-group">
+                      <label for="employeeID" class="col-form-label">Employee ID</label>
+                      <input type="number" class="form-control" id="employeeID" name="empID" value="{{user.emp_id}}" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label for="jobcode" class="col-form-label">Job Code</label>
+                      <input type="number" class="form-control" id="jobecode" name="jobcode" value="{{user.job_code}}" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label for="fname" class="col-form-label">First Name</label>
+                      <input type="text" class="form-control" 
+                        id="fname" name="fname"
+                        [(ngModel)]="user.fname"
+                        #fname="ngModel"
+                        value="{{user.fname}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="lname" class="col-form-label">Last Name</label>
+                      <input type="text" class="form-control" 
+                        id="lname" name="lname" 
+                        [(ngModel)]="user.lname"
+                        #lname="ngModel"
+                        value="{{user.fname}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="email" class="col-form-label">Email</label>
+                      <input type="email" class="form-control" 
+                        id="email" name="email" 
+                        [(ngModel)]="user.email"
+                        #email="ngModel"
+                        value="{{user.email}}">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" 
+                        (click)="getPersonalInfo()" data-dismiss="modal">Close</button>
+                        <button 
+                            type="button" class="btn btn-primary" 
+                            data-dismiss="modal"
+                            (click)="updateEmployeeInfo()"
+                            >
+                            Submit
+                        </button>
+                    </div>
+                  </form>
+   
+                </div>
+               
+              </div>
+            </div>
+        </div>
+    </div>
 
     
 
