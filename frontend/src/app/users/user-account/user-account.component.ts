@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ChildActivationStart, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
-import { User } from '../user.model';
+import { User } from '../models/user.model';
+import { Reimbursement } from '../models/reimbursement.model';
 
 
 @Component({
@@ -20,8 +21,12 @@ export class UserAccountComponent implements OnInit {
     lname: '',
     email: '',
   }
-
   userInfoPending: boolean = true;
+  requestLoading: boolean = true;
+  employeeReimbursements: Reimbursement[] = [];
+  
+
+ 
 
   constructor(
     private authService: AuthService,
@@ -31,6 +36,7 @@ export class UserAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPersonalInfo();
+    this.getEmployeeReimbursementRequests(this.user.emp_id);
   }
 
   // render user's personal info to the DOM
@@ -47,8 +53,33 @@ export class UserAccountComponent implements OnInit {
         // update session
         sessionStorage.setItem('auth', JSON.stringify(this.user));
       },
-      (err) => console.log(err),
+      (err) => {
+        console.log(err);
+
+      }
     );
   }
+
+  getEmployeeReimbursementRequests(userId: number): void {
+    this.userService.getEmployeeReimbursementRequests(userId)
+    .subscribe(
+      (response) => {
+        // when request is successful
+        console.log(response);
+        
+        this.employeeReimbursements = response;
+        // update session
+        sessionStorage.setItem('reimbursements', JSON.stringify(this.employeeReimbursements));
+        this.requestLoading = false;
+      },
+      (err) => {
+        this.requestLoading = false;
+        console.log(err);
+      }
+    );
+  }
+
+  
+
 
 }
