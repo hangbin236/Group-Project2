@@ -6,15 +6,11 @@ import { User } from '../models/user.model';
 })
 export class AuthService {
 
-  isLoggedIn: boolean = false;
-  jobCode: number = 0;
 
   constructor() { }
 
   storeUserSession(user: User): void {
     sessionStorage.setItem("auth", JSON.stringify(user));
-    this.isLoggedIn = true;
-    this.jobCode = user.job_code;
   }
 
   getUserInfo(): any { 
@@ -27,7 +23,6 @@ export class AuthService {
 
   endUserSession(): void {
     sessionStorage.clear();
-    this.isLoggedIn = false;
   }
 
 

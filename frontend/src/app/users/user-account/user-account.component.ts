@@ -38,7 +38,13 @@ export class UserAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPersonalInfo();
-    this.getEmployeeReimbursementRequests(this.user.emp_id);
+    this.getEmployeeReimbursementRequests();
+  }
+
+  // sign user out
+  signOut(): void {
+    this.authService.endUserSession();
+    this.router.navigateByUrl('login');
   }
 
   // render user's personal info to the DOM
@@ -64,9 +70,9 @@ export class UserAccountComponent implements OnInit {
     );
   }
 
-  getEmployeeReimbursementRequests(userId: number): void {
+  getEmployeeReimbursementRequests(): void {
     this.requestLoading = true;
-    this.reimbursementService.getEmployeeReimbursementRequests(userId)
+    this.reimbursementService.getEmployeeReimbursementRequests(this.user.emp_id)
     .subscribe(
       (response) => {
         // when request is successful

@@ -17,7 +17,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link btn" routerLink="/user-account" >
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -32,7 +32,9 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link btn" >
+                <a class="nav-link btn" 
+                    (click)="getEmployeeReimbursementRequests()"
+                >
                     <i class="fas fa-fw fa-cog"></i>
                     <span>View All Reimbursements</span>
                 </a>
@@ -147,7 +149,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-white">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-white">Reimbursement System Dashboard</h1>
                         <a
                             id="requestBtn" 
                             class="d-none d-sm-inline-block btn btn-sm btn-primary 
@@ -370,7 +372,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="#" id="logOut">Logout</a>
+                    <a class="btn btn-primary" href="#" (click)=" signOut()">Logout</a>
                 </div>
             </div>
         </div>
