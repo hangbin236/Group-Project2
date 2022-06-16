@@ -23,7 +23,6 @@ export class ReimbursementsService {
     const formData = new FormData();
     formData.append("emp_id", userId);
     formData.append("amount", amount as string);
-    console.log("form " + formData.get("amount"))
     return this.http.post<Reimbursement>(`${this.baseUrl}/reimbursements` , formData);
   }
 
@@ -72,8 +71,15 @@ export class ReimbursementsService {
   getAllReimbursementRequest(): Reimbursement[] {
     let reimbursements: Reimbursement[] = JSON.parse(
       sessionStorage.getItem("reimbursements") as string);
-
     return reimbursements
+  }
+
+  // updates request in DB
+  updateReimbursementStatus(status: string, reimbursementId: any): Observable<any> {
+    const formData = new FormData();
+    formData.append("rb_id", reimbursementId);
+    formData.append("rb_status", status);
+    return this.http.put<any>(`${this.baseUrl}/reimbursements/status/update` , formData);
   }
 
 }

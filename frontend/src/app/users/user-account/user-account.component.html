@@ -262,8 +262,20 @@
                                                 <h4 class="small font-weight-bold">
                                                     Date: {{item.rb_timestamp | date: 'short'}}
                                                 </h4>
-                                                <button type="button">Reject</button>
-                                                <button type="button">Resolve</button>
+                                                <button 
+                                                    type="button" class="btn btn-danger btn-sm" 
+                                                    (click)="updateReimbursementStatus('rejected', item.rb_id)"
+                                                    id="rejected_${item.rb_id}"
+                                                >
+                                                    Reject
+                                                </button>
+                                                <button 
+                                                    type="button" class="btn btn-success btn-sm" 
+                                                    (click)="updateReimbursementStatus('resolved', item.rb_id)"
+                                                    id="rejected_${item.rb_id}"
+                                                >
+                                                    Resolve
+                                                </button>
                                             </div>
 
                                             <div class="dropdown-divider"></div>

@@ -128,7 +128,7 @@ export class UserAccountComponent implements OnInit {
   // Admin Operations
 
   // search for specific employee from DB
-  getSearchFormRequest(userId: any): void{
+  getSearchFormRequest(userId: any): void {
     console.log(userId);
     // validate form input
     if(isNaN(parseInt(userId))){
@@ -151,6 +151,36 @@ export class UserAccountComponent implements OnInit {
       (err) => {
         this.requestLoading = false;
         console.log(err);
+      }
+    );
+  }
+
+  updateReimbursementStatus(status: string, reimbursementId: any): void {
+    this.reimbursementService.updateReimbursementStatus(status, reimbursementId)
+    .subscribe(
+      (response) => {
+        // when request is successful
+        console.log(response);
+        // update data for DOM
+        let newReq = JSON.parse(sessionStorage.getItem("reimbursements") as string)
+                    .map((item: any) => {
+                        if (item.rb_id == reimbursementId) {
+                            item.rb_status = status;
+                            return item;
+                        } else {
+                            return item;
+                        }
+                    });
+
+          // store new values
+          this.reimbursementService = newReq;
+          sessionStorage.setItem("reimbursements", JSON.stringify(newReq));
+
+      },
+      (err) => {
+        // must change backend response to json
+        console.log(err.message);
+
       }
     );
   }
