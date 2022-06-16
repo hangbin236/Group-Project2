@@ -25,7 +25,7 @@ export class UserAccountComponent implements OnInit {
   userInfoPending: boolean = true;
   requestLoading: boolean = true;
   employeeReimbursements: Reimbursement[] = [];
-  
+  employees: User[] = [];
 
  
 
@@ -72,22 +72,27 @@ export class UserAccountComponent implements OnInit {
 
   getEmployeeReimbursementRequests(): void {
     this.requestLoading = true;
-    this.reimbursementService.getEmployeeReimbursementRequests(this.user.emp_id)
-    .subscribe(
-      (response) => {
-        // when request is successful
-        console.log(response);
-        
-        this.employeeReimbursements = response;
-        // update session
-        sessionStorage.setItem('reimbursements', JSON.stringify(this.employeeReimbursements));
-        this.requestLoading = false;
-      },
-      (err) => {
-        this.requestLoading = false;
-        console.log(err);
-      }
-    );
+    
+    if(this.authService.getUserInfo().job_code == 100) {
+      this.reimbursementService.getEmployeeReimbursementRequests(this.user.emp_id)
+      .subscribe(
+        (response) => {
+          // when request is successful
+          console.log(response);
+          
+          this.employeeReimbursements = response;
+          // update session
+          sessionStorage.setItem('reimbursements', JSON.stringify(this.employeeReimbursements));
+          this.requestLoading = false;
+        },
+        (err) => {
+          this.requestLoading = false;
+          console.log(err);
+        }
+      );
+    } else if(this.authService.getUserInfo().job_code == 200) {
+      this.getAllEmployeesReimbursementRequests();
+    }
   }
 
   getAllRequest(): void {
@@ -185,4 +190,43 @@ export class UserAccountComponent implements OnInit {
     );
   }
 
+  viewAllEmployees(): void {
+
+    this.userService.getAllEmployees()
+    .subscribe(
+      (response) => {
+        // when request is successful
+        console.log(response);
+        
+        // update data to render on DOM
+        this.employees = response;
+      },
+      (err) => {
+        this.requestLoading = false;
+        console.log(err);
+      }
+    );
+  }
+
+  getAllEmployeesReimbursementRequests(): void {
+    this.requestLoading = true;
+    this.reimbursementService.getAllEmployeesReimbursementRequests()
+    .subscribe(
+      (response) => {
+        // when request is successful
+        console.log(response);
+        
+        this.employeeReimbursements = response;
+        // update session
+        sessionStorage.setItem('reimbursements', JSON.stringify(this.employeeReimbursements));
+        this.requestLoading = false;
+      },
+      (err) => {
+        this.requestLoading = false;
+        console.log(err);
+      }
+    );
+  
+  }
+  
 }

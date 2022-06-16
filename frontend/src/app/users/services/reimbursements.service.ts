@@ -82,4 +82,10 @@ export class ReimbursementsService {
     return this.http.put<any>(`${this.baseUrl}/reimbursements/status/update` , formData);
   }
 
+    // get an Employee's list of Reimbursement request from DB
+    getAllEmployeesReimbursementRequests(): Observable<Reimbursement[]>{
+      return this.http.get<Reimbursement[]>(`${this.baseUrl}/reimbursements`);
+    }
+  
+
 }

@@ -55,9 +55,14 @@
 
             <!-- Nav Item - Employees-->
             <li class="nav-item" *ngIf="user.job_code == 200">
-                <a class="nav-link" href="#" id="getAllEmployees">
+                <a 
+                    class="nav-link btn" href="#" id="getAllEmployees"
+                    data-toggle="modal" data-target="#viewAllEmployeesModal"
+                    (click)="viewAllEmployees()"
+                >
                     <i class="fas fa-fw fa-table"></i>
-                    <span>View All Employees</span></a>
+                    <span>View All Employees</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -176,7 +181,7 @@
                         <div class="col-lg-6 mb-4">
 
                             <!-- Project Card Example -->
-                            <div class="card shadow mb-4" id="list-wrapper">
+                            <div class="card shadow mb-4 overflow-auto" id="list-wrapper" style="max-height: 400px;">
                                 <div class="card-header py-3" >
                                     <h5 class="m-0 font-weight-bold text-primary float-left">Reimbursements</h5>
 
@@ -457,5 +462,48 @@
         </div>
     </div>
 
+    <!-- Modal To View List Of Employees -->  
+  <div class="modal fade" id="viewAllEmployeesModal" tabindex="-1" role="dialog" aria-labelledby="viewAllEmployeesModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewAllEmployeesModalTitle">All Employees</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+            <!-- Employees Table -->
+            <table class="table table-hover">  
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Job Code</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let user of employees">
+                    <tr>
+                        <th scope="row">{{user.emp_id}}</th>
+                        <td>{{user.job_code}}</td>
+                        <td>{{user.fname}}</td>
+                        <td>{{user.lname}}</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
     
 

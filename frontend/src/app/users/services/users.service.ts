@@ -33,6 +33,10 @@ export class UsersService {
     return this.http.put<User>(`${this.baseUrl}/employees/update`, formData);
   }
 
+  getAllEmployees(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/employees/`);
+  }
+
 
 
 
