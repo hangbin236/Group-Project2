@@ -19,16 +19,16 @@ public class ReimbursementEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="rb_id")
-	private int rb_id;
+	private int id;
 	
 	@Column(name="rb_status")
-	private String rb_status;
+	private String status;
 	
 	@Column(name="rb_amount")
-	private double rb_amount;
+	private double amount;
 	
 	@Column(name="rb_timestamp")
-	private Timestamp rb_timestamp;
+	private Timestamp timestamp;
 	
 	@ManyToOne
 	@JoinColumn(name="emp_id", nullable=false)
@@ -37,62 +37,53 @@ public class ReimbursementEntity {
 	public ReimbursementEntity() {
 		
 	}
-	
-	public ReimbursementEntity(double rb_amount) {
+
+	public ReimbursementEntity(double amount) {
 		super();
-		this.rb_amount = rb_amount;
-		rb_status = "pending";
-		rb_timestamp = new Timestamp(System.currentTimeMillis());
+		this.amount = amount;
+		status = "pending";
+		timestamp = new Timestamp(System.currentTimeMillis());
 	}
 
-	public ReimbursementEntity(String rb_status, double rb_amount, Timestamp rb_timestamp, EmployeeEntity employee) {
+	public ReimbursementEntity(int id, String status, double amount, Timestamp timestamp, EmployeeEntity employee) {
 		super();
-		this.rb_status = rb_status;
-		this.rb_amount = rb_amount;
-		this.rb_timestamp = rb_timestamp;
+		this.id = id;
+		this.status = status;
+		this.amount = amount;
+		this.timestamp = timestamp;
 		this.employee = employee;
 	}
 
-	public ReimbursementEntity(int rb_id, String rb_status, double rb_amount, Timestamp rb_timestamp,
-			EmployeeEntity employee) {
-		super();
-		this.rb_id = rb_id;
-		this.rb_status = rb_status;
-		this.rb_amount = rb_amount;
-		this.rb_timestamp = rb_timestamp;
-		this.employee = employee;
+	public int getId() {
+		return id;
 	}
 
-	public int getRb_id() {
-		return rb_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setRb_id(int rb_id) {
-		this.rb_id = rb_id;
+	public String getStatus() {
+		return status;
 	}
 
-	public String getRb_status() {
-		return rb_status;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
-	public void setRb_status(String rb_status) {
-		this.rb_status = rb_status;
+	public double getAmount() {
+		return amount;
 	}
 
-	public double getRb_amount() {
-		return rb_amount;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
-	public void setRb_amount(double rb_amount) {
-		this.rb_amount = rb_amount;
+	public Timestamp getTimestamp() {
+		return timestamp;
 	}
 
-	public Timestamp getRb_timestamp() {
-		return rb_timestamp;
-	}
-
-	public void setRb_timestamp(Timestamp rb_timestamp) {
-		this.rb_timestamp = rb_timestamp;
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public EmployeeEntity getEmployee() {
@@ -105,7 +96,7 @@ public class ReimbursementEntity {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(employee, rb_amount, rb_id, rb_status, rb_timestamp);
+		return Objects.hash(amount, employee, id, status, timestamp);
 	}
 
 	@Override
@@ -117,17 +108,17 @@ public class ReimbursementEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		ReimbursementEntity other = (ReimbursementEntity) obj;
-		return Objects.equals(employee, other.employee)
-				&& Double.doubleToLongBits(rb_amount) == Double.doubleToLongBits(other.rb_amount)
-				&& rb_id == other.rb_id && Objects.equals(rb_status, other.rb_status)
-				&& Objects.equals(rb_timestamp, other.rb_timestamp);
+		return Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount)
+				&& Objects.equals(employee, other.employee) && id == other.id && Objects.equals(status, other.status)
+				&& Objects.equals(timestamp, other.timestamp);
 	}
 
 	@Override
 	public String toString() {
-		return "ReimbursementEntity [rb_id=" + rb_id + ", rb_status=" + rb_status + ", rb_amount=" + rb_amount
-				+ ", rb_timestamp=" + rb_timestamp + ", employee=" + employee + "]";
+		return "ReimbursementEntity [id=" + id + ", status=" + status + ", amount=" + amount + ", timestamp="
+				+ timestamp + ", employee=" + employee + "]";
 	}
+
 	
 	
 }

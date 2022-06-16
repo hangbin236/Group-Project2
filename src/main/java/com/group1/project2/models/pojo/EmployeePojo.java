@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class EmployeePojo {
 	
-	private int emp_id;
+	private int id;
 	private String password;
 	private int job_code;
 	private String fname;
@@ -15,9 +15,9 @@ public class EmployeePojo {
 		super();
 	}
 
-	public EmployeePojo(int emp_id, String password, int job_code, String fname, String lname, String email) {
+	public EmployeePojo(int id, String password, int job_code, String fname, String lname, String email) {
 		super();
-		this.emp_id = emp_id;
+		this.id = id;
 		this.password = password;
 		this.job_code = job_code;
 		this.fname = fname;
@@ -25,12 +25,12 @@ public class EmployeePojo {
 		this.email = email;
 	}
 
-	public int getEmp_id() {
-		return emp_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPassword() {
@@ -74,14 +74,8 @@ public class EmployeePojo {
 	}
 
 	@Override
-	public String toString() {
-		return "EmployeePojo [emp_id=" + emp_id + ", password=" + password + ", job_code=" + job_code + ", fname="
-				+ fname + ", lname=" + lname + ", email=" + email + "]";
-	}
-
-	@Override
 	public int hashCode() {
-		return Objects.hash(email, emp_id, fname, job_code, lname, password);
+		return Objects.hash(email, fname, id, job_code, lname, password);
 	}
 
 	@Override
@@ -93,10 +87,18 @@ public class EmployeePojo {
 		if (getClass() != obj.getClass())
 			return false;
 		EmployeePojo other = (EmployeePojo) obj;
-		return Objects.equals(email, other.email) && emp_id == other.emp_id && Objects.equals(fname, other.fname)
+		return Objects.equals(email, other.email) && Objects.equals(fname, other.fname) && id == other.id
 				&& job_code == other.job_code && Objects.equals(lname, other.lname)
 				&& Objects.equals(password, other.password);
 	}
+
+	@Override
+	public String toString() {
+		return "EmployeePojo [id=" + id + ", password=" + password + ", job_code=" + job_code + ", fname=" + fname
+				+ ", lname=" + lname + ", email=" + email + "]";
+	}
+
+	
 	
 	
 }

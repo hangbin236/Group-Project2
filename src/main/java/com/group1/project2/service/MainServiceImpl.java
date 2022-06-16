@@ -37,6 +37,7 @@ public class MainServiceImpl implements MainService {
 			empPojo = new EmployeePojo();
 			BeanUtils.copyProperties(fetchedEmpEntity, empPojo);
 		}
+		System.out.println(empPojo);
 		return empPojo;
 	}
 
@@ -51,12 +52,13 @@ public class MainServiceImpl implements MainService {
 		}
 		return empPojo;
 	}
-
+	
+	//NEEDS PASSWORD FIX
 	@Override
 	public EmployeePojo updateEmployee(EmployeePojo empPojo) throws ApplicationException {
 		EmployeeEntity empEntity = new EmployeeEntity();
 		BeanUtils.copyProperties(empPojo, empEntity);
-//		EmployeeEntity returnedEmpEntity = empDao.save(empEntity);
+		empDao.save(empEntity);
 		return empPojo;
 	}
 
@@ -81,7 +83,11 @@ public class MainServiceImpl implements MainService {
 		
 		for(ReimbursementEntity fetchedRbEntity : allRbEntity) {
 			ReimbursementPojo returnedRbPojo = new ReimbursementPojo();
+			System.out.println(fetchedRbEntity);
 			BeanUtils.copyProperties(fetchedRbEntity, returnedRbPojo);
+			EmployeePojo fetchedEmpPojo = new EmployeePojo();
+			BeanUtils.copyProperties(fetchedRbEntity.getEmployee(), fetchedEmpPojo);
+			returnedRbPojo.setEmployee(fetchedEmpPojo);
 			allRbPojo.add(returnedRbPojo);
 		}
 		return allRbPojo;
@@ -95,22 +101,25 @@ public class MainServiceImpl implements MainService {
 		for(ReimbursementEntity fetchedRbEntity : allRbEntity) {
 			ReimbursementPojo returnedRbPojo = new ReimbursementPojo();
 			BeanUtils.copyProperties(fetchedRbEntity, returnedRbPojo);
+			EmployeePojo fetchedEmpPojo = new EmployeePojo();
+			BeanUtils.copyProperties(fetchedRbEntity.getEmployee(), fetchedEmpPojo);
+			returnedRbPojo.setEmployee(fetchedEmpPojo);
 			allRbPojo.add(returnedRbPojo);
 		}
 		return allRbPojo;
 	}
 
 	@Override
-	public List<ReimbursementPojo> getEmployeeRequests(EmployeePojo empPojo) throws ApplicationException {
-		EmployeeEntity empEntity = new EmployeeEntity();
-		BeanUtils.copyProperties(empPojo, empEntity);
-		
-		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployee(empEntity);
+	public List<ReimbursementPojo> getEmployeeRequests(int emp_id) throws ApplicationException {
+		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployeeId(emp_id);
 		List<ReimbursementPojo> allRbPojo = new ArrayList<ReimbursementPojo>();
 		
 		for(ReimbursementEntity fetchedRbEntity : allRbEntity) {
 			ReimbursementPojo returnedRbPojo = new ReimbursementPojo();
 			BeanUtils.copyProperties(fetchedRbEntity, returnedRbPojo);
+			EmployeePojo fetchedEmpPojo = new EmployeePojo();
+			BeanUtils.copyProperties(fetchedRbEntity.getEmployee(), fetchedEmpPojo);
+			returnedRbPojo.setEmployee(fetchedEmpPojo);
 			allRbPojo.add(returnedRbPojo);
 		}
 		return allRbPojo;
@@ -120,6 +129,12 @@ public class MainServiceImpl implements MainService {
 	public ReimbursementPojo updateRequest(ReimbursementPojo rbPojo) throws ApplicationException {
 		ReimbursementEntity rbEntity = new ReimbursementEntity();
 		BeanUtils.copyProperties(rbPojo, rbEntity);
+		
+		EmployeeEntity empEntity = new EmployeeEntity();
+		BeanUtils.copyProperties(rbPojo.getEmployee(), empEntity);
+		rbEntity.setEmployee(empEntity);
+		System.out.println(rbEntity);
+		System.out.println(rbPojo);
 		rbDao.save(rbEntity);
 		return rbPojo;
 	}
@@ -128,27 +143,27 @@ public class MainServiceImpl implements MainService {
 	public ReimbursementPojo submitRequest(EmployeePojo empPojo, double amount) throws ApplicationException {
 		EmployeeEntity empEntity = new EmployeeEntity();
 		BeanUtils.copyProperties(empPojo, empEntity);
-		ReimbursementEntity rbEntity = new ReimbursementEntity();
-		rbEntity.setRb_amount(amount);
+		ReimbursementEntity rbEntity = new ReimbursementEntity(amount);
 		rbEntity.setEmployee(empEntity);
 		
 		rbEntity = rbDao.save(rbEntity);
 		ReimbursementPojo rbPojo = new ReimbursementPojo();
 		BeanUtils.copyProperties(rbEntity, rbPojo);
+		rbPojo.setEmployee(empPojo);
 		return rbPojo;
 	}
 
 	@Override
-	public List<ReimbursementPojo> viewMyRequests(EmployeePojo empPojo, String status) throws ApplicationException {
-		EmployeeEntity empEntity = new EmployeeEntity();
-		BeanUtils.copyProperties(empPojo, empEntity);
-		
-		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployeeAndStatus(empEntity, status);
+	public List<ReimbursementPojo> viewMyRequests(int empId, String status) throws ApplicationException {
+		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployeeIdAndStatus(empId, status);
 		List<ReimbursementPojo> allRbPojo = new ArrayList<ReimbursementPojo>();
 		
 		for(ReimbursementEntity fetchedRbEntity : allRbEntity) {
 			ReimbursementPojo returnedRbPojo = new ReimbursementPojo();
 			BeanUtils.copyProperties(fetchedRbEntity, returnedRbPojo);
+			EmployeePojo fetchedEmpPojo = new EmployeePojo();
+			BeanUtils.copyProperties(fetchedRbEntity.getEmployee(), fetchedEmpPojo);
+			returnedRbPojo.setEmployee(fetchedEmpPojo);
 			allRbPojo.add(returnedRbPojo);
 		}
 		return allRbPojo;

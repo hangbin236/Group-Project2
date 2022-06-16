@@ -14,10 +14,10 @@ public interface MainService {
 	
 	List<ReimbursementPojo> getAllRequests() throws ApplicationException;
 	List<ReimbursementPojo> getAllRequestsByStatus(String status) throws ApplicationException;
-	List<ReimbursementPojo> getEmployeeRequests(EmployeePojo empPojo) throws ApplicationException;
+	List<ReimbursementPojo> getEmployeeRequests(int emp_id) throws ApplicationException;
 //	boolean updateRequestStatus(int rb_id, String newStatus) throws ApplicationException;
 //	boolean updateRequestDetail(int rb_id, double newAmount) throws ApplicationException;
 	ReimbursementPojo updateRequest(ReimbursementPojo rbPojo) throws ApplicationException;
 	ReimbursementPojo submitRequest(EmployeePojo empPojo, double amount) throws ApplicationException;
-	List<ReimbursementPojo> viewMyRequests(EmployeePojo empPojo, String status) throws ApplicationException;
+	List<ReimbursementPojo> viewMyRequests(int empId, String status) throws ApplicationException;
 }
