@@ -1,0 +1,7 @@
+2022-06-16 18:14:50,951 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-0NHIPR9 with PID 19944 (D:\GitHub\Group-Project2\target\classes started by BiuBiu in D:\GitHub\Group-Project2)
+2022-06-16 18:14:50,952 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-16 18:14:54,611 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 3.991 seconds (JVM running for 4.376)
+2022-06-16 18:14:58,932 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Entering EmployeeController.com.group1.project2.controllers.EmployeeController()
+2022-06-16 18:14:58,942 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-16 18:14:59,148 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-16 18:14:59,149 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Exiting EmployeeController.com.group1.project2.controllers.EmployeeController()
