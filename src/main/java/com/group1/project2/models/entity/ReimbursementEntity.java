@@ -37,6 +37,13 @@ public class ReimbursementEntity {
 	public ReimbursementEntity() {
 		
 	}
+	
+	public ReimbursementEntity(double rb_amount) {
+		super();
+		this.rb_amount = rb_amount;
+		rb_status = "pending";
+		rb_timestamp = new Timestamp(System.currentTimeMillis());
+	}
 
 	public ReimbursementEntity(String rb_status, double rb_amount, Timestamp rb_timestamp, EmployeeEntity employee) {
 		super();

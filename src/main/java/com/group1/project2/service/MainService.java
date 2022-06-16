@@ -18,6 +18,6 @@ public interface MainService {
 //	boolean updateRequestStatus(int rb_id, String newStatus) throws ApplicationException;
 //	boolean updateRequestDetail(int rb_id, double newAmount) throws ApplicationException;
 	ReimbursementPojo updateRequest(ReimbursementPojo rbPojo) throws ApplicationException;
-	ReimbursementPojo submitRequest(int emp_id, double amount) throws ApplicationException;
-	List<ReimbursementPojo> viewMyRequests(int emp_id, String status) throws ApplicationException;
+	ReimbursementPojo submitRequest(EmployeePojo empPojo, double amount) throws ApplicationException;
+	List<ReimbursementPojo> viewMyRequests(EmployeePojo empPojo, String status) throws ApplicationException;
 }
