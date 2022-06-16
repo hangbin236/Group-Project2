@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 import { User } from '../models/user.model';
 import { Reimbursement } from '../models/reimbursement.model';
+import { ReimbursementsService } from '../services/reimbursements.service';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class UserAccountComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UsersService,
-    private router: Router
+    private router: Router,
+    private reimbursementService: ReimbursementsService
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +43,9 @@ export class UserAccountComponent implements OnInit {
 
   // render user's personal info to the DOM
   getPersonalInfo(): void {
+    this.userInfoPending = true;
     this.user = this.authService.getUserInfo() as User;
+    this.userInfoPending = false;
   }
 
   updateEmployeeInfo(): void {
@@ -61,7 +65,8 @@ export class UserAccountComponent implements OnInit {
   }
 
   getEmployeeReimbursementRequests(userId: number): void {
-    this.userService.getEmployeeReimbursementRequests(userId)
+    this.requestLoading = true;
+    this.reimbursementService.getEmployeeReimbursementRequests(userId)
     .subscribe(
       (response) => {
         // when request is successful
@@ -75,6 +80,41 @@ export class UserAccountComponent implements OnInit {
       (err) => {
         this.requestLoading = false;
         console.log(err);
+      }
+    );
+  }
+
+  getAllRequest(): void {
+    this.employeeReimbursements = this.reimbursementService.getAllReimbursementRequest();
+  }
+
+  getPendingRequest(): void {
+    this.employeeReimbursements = this.reimbursementService.getPendingReimbursementRequest();
+  }
+
+  getResolvedRequest(): void {
+    this.employeeReimbursements = this.reimbursementService.getResolvedReimbursementRequest();
+  }
+
+  getRejectedRequest(): void {
+    this.employeeReimbursements = this.reimbursementService.getRejectedReimbursementRequest();
+  }
+
+
+  // create ne request
+  generateReimbursementRequest(): void {
+    this.reimbursementService.generateReimbursementRequest(this.user.emp_id)
+    .subscribe(
+      (response) => {
+        // when request is successful
+        console.log(response);
+        // retrieve data for DOM
+       // this.getEmployeeReimbursementRequests(this.user.emp_id);
+      },
+      (err) => {
+        // must change backend response to json
+        console.log(err.message);
+
       }
     );
   }

@@ -33,10 +33,7 @@ export class UsersService {
     return this.http.put<User>(`${this.baseUrl}/employees/update`, formData);
   }
 
-  // get an Employee's list of Reimbursemnt request from DB
-  getEmployeeReimbursementRequests(userId: number): Observable<Reimbursement[]>{
-    return this.http.get<Reimbursement[]>(`${this.baseUrl}/reimbursements/emp/${userId}`);
-  }
+
 
 
 }
