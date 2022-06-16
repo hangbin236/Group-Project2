@@ -125,7 +125,34 @@ export class UserAccountComponent implements OnInit {
     );
   }
 
-  
+  // Admin Operations
 
+  // search for specific employee from DB
+  getSearchFormRequest(userId: any): void{
+    console.log(userId);
+    // validate form input
+    if(isNaN(parseInt(userId))){
+      alert("Please enter the correct ID number!");
+      return;
+    }
+
+    this.requestLoading = true;
+    this.reimbursementService.getEmployeeReimbursementRequests(userId)
+    .subscribe(
+      (response) => {
+        // when request is successful
+        console.log(response);
+        
+        this.employeeReimbursements = response;
+        // update session
+        sessionStorage.setItem('reimbursements', JSON.stringify(this.employeeReimbursements));
+        this.requestLoading = false;
+      },
+      (err) => {
+        this.requestLoading = false;
+        console.log(err);
+      }
+    );
+  }
 
 }

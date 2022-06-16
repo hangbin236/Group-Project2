@@ -54,8 +54,8 @@
 
 
             <!-- Nav Item - Employees-->
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="getAllEmployees" hidden>
+            <li class="nav-item" *ngIf="user.job_code == 200">
+                <a class="nav-link" href="#" id="getAllEmployees">
                     <i class="fas fa-fw fa-table"></i>
                     <span>View All Employees</span></a>
             </li>
@@ -78,9 +78,16 @@
 
                     <!-- Topbar Search -->
                     <form
+                        (ngSubmit)="getSearchFormRequest(searchId.value)"
+                        *ngIf="user.job_code == 200"
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" id="searchForm">
-                        <div class="input-group" hidden>
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for specific requests by employee ID here..."
+                        <div class="input-group" >
+                            <input type="text" ngModel
+                                #searchId
+                                name="searchId"
+                                class="form-control bg-light border-0 small" 
+                                required
+                                placeholder="Search for specific requests by employee ID here..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
@@ -311,12 +318,6 @@
                                             </table>
                                         </ng-template>
                           
-                                        <!--button 
-                                            class="btn btn-primary float-right mt-4"
-                                            data-toggle="modal" data-target="#employeeModal"
-                                            ">
-                                            Update
-                                        </-->
                                         <button
                                             class="btn btn-primary float-right"
                                             data-toggle="modal" data-target="#employeeModal"
