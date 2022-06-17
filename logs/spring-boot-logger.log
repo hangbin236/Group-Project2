@@ -1,3 +1,75 @@
 2022-06-17 10:58:43,361 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-0NHIPR9 with PID 12908 (D:\GitHub\Group-Project2\target\classes started by BiuBiu in D:\GitHub\Group-Project2)
 2022-06-17 10:58:43,363 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
 2022-06-17 10:58:48,106 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 5.114 seconds (JVM running for 5.57)
+2022-06-17 15:12:06,353 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 11092 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:12:06,354 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:12:31,226 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 25.18 seconds (JVM running for 25.932)
+2022-06-17 15:13:23,601 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:13:23,608 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:13:34,715 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:13:34,715 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:34:44,356 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 15204 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:34:44,357 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:34:48,290 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.26 seconds (JVM running for 4.841)
+2022-06-17 15:34:58,234 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:34:58,242 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:35:16,446 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:35:16,447 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:36:09,443 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 9124 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:36:09,443 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:36:13,280 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.128 seconds (JVM running for 4.64)
+2022-06-17 15:37:46,528 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:37:46,536 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:38:04,815 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:38:04,816 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:45:57,312 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 7928 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:45:57,312 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:46:01,403 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.395 seconds (JVM running for 4.916)
+2022-06-17 15:46:12,144 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:46:12,152 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:46:30,415 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:46:30,415 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:47:00,097 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 19232 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:47:00,097 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:47:04,140 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.352 seconds (JVM running for 4.891)
+2022-06-17 15:55:36,359 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:55:36,366 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:55:54,627 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:55:54,627 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-1] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:58:54,131 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 19232 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:58:54,131 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:58:55,832 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 1.73 seconds (JVM running for 716.583)
+2022-06-17 15:59:03,421 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 19232 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:59:03,421 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:59:05,527 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 17188 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 15:59:05,528 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 15:59:09,349 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.126 seconds (JVM running for 4.644)
+2022-06-17 15:59:14,856 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 15:59:14,865 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:59:15,439 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 15:59:15,439 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 16:00:06,173 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 14908 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 16:00:06,174 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 16:00:10,032 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.145 seconds (JVM running for 4.673)
+2022-06-17 16:00:24,764 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 16:00:24,771 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 16:00:25,342 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 16:00:25,342 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 16:00:56,295 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 14908 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 16:00:56,295 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 16:00:57,924 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 1.655 seconds (JVM running for 52.565)
+2022-06-17 16:01:09,578 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 14908 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 16:01:09,578 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 16:01:11,171 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 10616 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 16:01:11,171 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 16:01:15,150 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.289 seconds (JVM running for 4.813)
+2022-06-17 16:01:17,061 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 16:01:17,072 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Entering MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 16:01:17,687 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting MainServiceImpl.com.group1.project2.service.MainServiceImpl()
+2022-06-17 16:01:17,687 INFO com.group1.project2.aop.LoggingAspect [http-nio-8484-exec-2] Exiting ReimbursementController.com.group1.project2.controllers.ReimbursementController()
+2022-06-17 16:02:42,164 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 10616 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 16:02:42,164 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 16:02:43,812 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 1.673 seconds (JVM running for 93.475)
+2022-06-17 16:02:48,570 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 10616 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
+2022-06-17 16:02:48,570 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 16:02:50,139 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 1.589 seconds (JVM running for 99.802)

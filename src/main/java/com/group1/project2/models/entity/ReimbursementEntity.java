@@ -93,32 +93,4 @@ public class ReimbursementEntity {
 	public void setEmployee(EmployeeEntity employee) {
 		this.employee = employee;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(amount, employee, id, status, timestamp);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ReimbursementEntity other = (ReimbursementEntity) obj;
-		return Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount)
-				&& Objects.equals(employee, other.employee) && id == other.id && Objects.equals(status, other.status)
-				&& Objects.equals(timestamp, other.timestamp);
-	}
-
-	@Override
-	public String toString() {
-		return "ReimbursementEntity [id=" + id + ", status=" + status + ", amount=" + amount + ", timestamp="
-				+ timestamp + ", employee=" + employee + "]";
-	}
-
-	
-	
 }
