@@ -1,0 +1,3 @@
+2022-06-17 10:58:43,361 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-0NHIPR9 with PID 12908 (D:\GitHub\Group-Project2\target\classes started by BiuBiu in D:\GitHub\Group-Project2)
+2022-06-17 10:58:43,363 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-17 10:58:48,106 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 5.114 seconds (JVM running for 5.57)
