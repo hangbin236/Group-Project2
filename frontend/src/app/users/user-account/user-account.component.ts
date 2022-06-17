@@ -112,7 +112,9 @@ export class UserAccountComponent implements OnInit {
   }
 
 
-  // create ne request
+  // create  request
+  // work on back end response
+  // experiment with front end 2way databinding
   generateReimbursementRequest(): void {
     this.reimbursementService.generateReimbursementRequest(this.user.emp_id)
     .subscribe(
@@ -131,7 +133,6 @@ export class UserAccountComponent implements OnInit {
   }
 
   // Admin Operations
-
   // search for specific employee from DB
   getSearchFormRequest(userId: any): void {
     console.log(userId);
@@ -160,6 +161,8 @@ export class UserAccountComponent implements OnInit {
     );
   }
 
+  // must change backend response to json
+  // must change backend response to json
   updateReimbursementStatus(status: string, reimbursementId: any): void {
     this.reimbursementService.updateReimbursementStatus(status, reimbursementId)
     .subscribe(
@@ -208,6 +211,7 @@ export class UserAccountComponent implements OnInit {
     );
   }
 
+  // 
   getAllEmployeesReimbursementRequests(): void {
     this.requestLoading = true;
     this.reimbursementService.getAllEmployeesReimbursementRequests()

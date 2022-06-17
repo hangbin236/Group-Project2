@@ -14,16 +14,6 @@ const routes: Routes = [
   defaultRoute,    
   { path: 'login', component: LoginComponent},
   { path: 'user-account', component: UserAccountComponent},
-
-  // { 
-  //   path: 'followers', 
-  //   component: GithubFollowersComponent,
-  //   children: [
-  //     { path: ':id', component: GithubProfileComponent },
-  //   ]
-  // },
-  // { path: 'posts', component: PostsComponent },
-  // { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
