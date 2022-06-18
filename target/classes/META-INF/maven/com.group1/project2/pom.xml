@@ -84,7 +84,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>ReimbursementMgmtP2Application</mainClass>
+							<mainClass>com.group1.project2.ReimbursementMgmtP2Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
