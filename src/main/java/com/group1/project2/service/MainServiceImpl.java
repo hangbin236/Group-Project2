@@ -37,7 +37,7 @@ public class MainServiceImpl implements MainService {
 			empPojo = new EmployeePojo();
 			BeanUtils.copyProperties(fetchedEmpEntity, empPojo);
 		}
-		System.out.println(empPojo);
+		// System.out.println(empPojo);
 		return empPojo;
 	}
 
