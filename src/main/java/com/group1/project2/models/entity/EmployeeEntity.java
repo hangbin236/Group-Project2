@@ -118,31 +118,5 @@ public class EmployeeEntity {
 	public void setReimbursements(Set<ReimbursementEntity> reimbursements) {
 		this.reimbursements = reimbursements;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(email, fname, id, job_code, lname, password, reimbursements);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		EmployeeEntity other = (EmployeeEntity) obj;
-		return Objects.equals(email, other.email) && Objects.equals(fname, other.fname) && id == other.id
-				&& job_code == other.job_code && Objects.equals(lname, other.lname)
-				&& Objects.equals(password, other.password) && Objects.equals(reimbursements, other.reimbursements);
-	}
-
-	@Override
-	public String toString() {
-		return "EmployeeEntity [id=" + id + ", password=" + password + ", job_code=" + job_code + ", fname=" + fname
-				+ ", lname=" + lname + ", email=" + email + ", reimbursements=" + reimbursements + "]";
-	}
-
 	
 }
