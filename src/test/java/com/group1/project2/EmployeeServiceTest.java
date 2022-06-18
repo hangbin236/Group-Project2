@@ -45,9 +45,6 @@ public class EmployeeServiceTest {
 	@Test
 	public void validateLoginTest() {
 
-		/*********************************************
-		 * UNDER CONSTRUCTION
-		 ****************************************************************/
 		Optional<EmployeeEntity> empEntity = Optional
 				.of(new EmployeeEntity("password", 100, "Carl", "Jones", "cjones@gmail.com"));
 		String password = "password";
@@ -91,9 +88,6 @@ public class EmployeeServiceTest {
 
 	@Test
 	public void updateEmployeeTest() {
-		/*********************************************
-		 * UNDER CONSTRUCTION
-		 ****************************************************************/
 
 		EmployeeEntity updateEmpEntity = new EmployeeEntity("password", 100, "Leia", "Organa", "lorgana@gmail.com");
 		EmployeePojo sendPojo = new EmployeePojo(0, "password", 100, "Leia", "Organa", "lorgana@gmail.com");
