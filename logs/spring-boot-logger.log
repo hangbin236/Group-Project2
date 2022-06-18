@@ -87,3 +87,6 @@
 2022-06-17 16:02:48,570 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-S2878I1 with PID 10616 (C:\Users\oscma\Documents\test\Group-Project2\target\classes started by oscma in C:\Users\oscma\Documents\test\Group-Project2)
 2022-06-17 16:02:48,570 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
 2022-06-17 16:02:50,139 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 1.589 seconds (JVM running for 99.802)
+2022-06-18 01:15:53,900 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ReimbursementMgmtP2Application using Java 17.0.2 on DESKTOP-0NHIPR9 with PID 18956 (D:\GitHub\Group-Project2\target\classes started by BiuBiu in D:\GitHub\Group-Project2)
+2022-06-18 01:15:53,901 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-06-18 01:15:57,840 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ReimbursementMgmtP2Application in 4.269 seconds (JVM running for 4.658)

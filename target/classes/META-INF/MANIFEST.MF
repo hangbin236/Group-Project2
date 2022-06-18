@@ -30,6 +30,6 @@ Class-Path: spring-boot-starter-mail-2.7.0.jar spring-boot-starter-2.7.0
  -api-2.0.2.jar
 Implementation-Title: ReimbursementMgmtP2
 Implementation-Version: 0.0.1-SNAPSHOT
-Main-Class: ReimbursementMgmtP2Application
+Main-Class: com.group1.project2.ReimbursementMgmtP2Application
 Created-By: Maven Integration for Eclipse
 
