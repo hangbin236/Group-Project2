@@ -10,18 +10,15 @@ import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import org.springframework.beans.BeanUtils;
 
 import com.group1.project2.dao.ReimbursementDao;
 import com.group1.project2.exception.ApplicationException;
@@ -173,30 +170,53 @@ public class ReimbursementServiceTest {
 	
 	@Test
 	public void updateRequestTest() {
-		/********************************UNDER CONSTRUCTION********************************************/
-	}
-	
-	
-	@Test
-	public void submitRequestTest() {
-		
-		/********************************UNDER CONSTRUCTION********************************************/
 		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
-		EmployeeEntity empEntity1 = new EmployeeEntity("password", 100, "Carl", "Jones", "cjones@gmail.com");
 		EmployeePojo empPojo1 = new EmployeePojo(0, "password", 100, "Carl", "Jones", "cjones@gmail.com");
+		EmployeeEntity empEntity1 = new EmployeeEntity("password", 100, "Carl", "Jones", "cjones@gmail.com");
 		
-		ReimbursementEntity rbEntity1 = new ReimbursementEntity(1, "pending", 250, timestamp, empEntity1 );
-	
-		
-		lenient().when(daoMock.save(rbEntity1)).thenReturn(rbEntity1);
+		ReimbursementEntity rbEntity = new ReimbursementEntity(14, "pending", 250, timestamp, empEntity1);
+				
+		lenient().when(daoMock.save(rbEntity)).thenReturn(rbEntity);
 		
 		ReimbursementPojo expectedPojo = new ReimbursementPojo(14, "pending", 250, timestamp, empPojo1);
 		ReimbursementPojo actualPojo = null;
 		
 		try {
-			actualPojo = serviceTest.submitRequest(empPojo1, 250);
+			actualPojo = serviceTest.updateRequest(expectedPojo);
+		} catch (ApplicationException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(expectedPojo, actualPojo);
+		
+		
+	}
+	
+	
+	@Test
+	@Disabled
+	public void submitRequestTest() {
+		
+		/********************************UNDER CONSTRUCTION********************************************/
+		
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		double amount = 250;
+		
+		EmployeeEntity empEntity1 = new EmployeeEntity("password", 100, "Carl", "Jones", "cjones@gmail.com");
+		EmployeePojo empPojo1 = new EmployeePojo(0, "password", 100, "Carl", "Jones", "cjones@gmail.com");
+		
+		ReimbursementEntity rbEntity1 = new ReimbursementEntity(0, "pending", 250, timestamp, empEntity1 );
+	
+		
+		lenient().when(daoMock.save(rbEntity1)).thenReturn(rbEntity1);
+		
+		ReimbursementPojo expectedPojo = new ReimbursementPojo(0, "pending", 250, timestamp, empPojo1);
+		ReimbursementPojo actualPojo = null;
+		
+		try {
+			actualPojo = serviceTest.submitRequest(empPojo1, amount);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
 		}

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.group1.project2.exception.ApplicationException;
+import com.group1.project2.exception.EmployeeNotFoundException;
 import com.group1.project2.models.pojo.EmployeePojo;
 import com.group1.project2.models.pojo.LoginForm;
 import com.group1.project2.service.MainService;
@@ -41,7 +42,7 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/employee/{emp_id}")
-	public EmployeePojo getEmployee(@PathVariable("emp_id") int id) {
+	public EmployeePojo getEmployee(@PathVariable("emp_id") int id) throws EmployeeNotFoundException{
 		try {
 			return mainServ.getEmployee(id);
 		} catch (ApplicationException e) {
