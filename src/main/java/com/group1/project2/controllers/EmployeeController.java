@@ -42,7 +42,7 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/employee/{emp_id}")
-	public EmployeePojo getEmployee(@PathVariable("emp_id") int id) throws EmployeeNotFoundException{
+	public EmployeePojo getEmployee(@PathVariable("emp_id") int id) throws ApplicationException{
 		try {
 			return mainServ.getEmployee(id);
 		} catch (ApplicationException e) {

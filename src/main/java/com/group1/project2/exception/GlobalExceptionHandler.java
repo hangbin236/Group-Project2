@@ -15,33 +15,48 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		 Map<String, String> errors = new HashMap<>();
-		    ex.getBindingResult().getAllErrors().forEach((error) -> {
-		        String fieldName = ((FieldError)error).getField();
-		        String errorMessage = error.getDefaultMessage();
-		        errors.put(fieldName, errorMessage);
-		    });
-		    // return response entity, by doing we can manipulate the response header and status if required
-		    return new ResponseEntity<Object>(errors, headers, status);
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		// return response entity, by doing we can manipulate the response header and
+		// status if required
+		return new ResponseEntity<Object>(errors, headers, status);
 	}
+
 	
 	
 	/*********************************UNDER CONSTRUCTION******************************************/
 	
 	@ExceptionHandler({EmployeeNotFoundException.class})
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
 	protected ResponseEntity<Object> handleEmployeeNotFoundException(Exception ex){
 		 Map<String, String> errors = new HashMap<>();											
 		 System.out.println(errors);
 		 errors.put("date", LocalDate.now()+"");
 		 errors.put("errorMessage", ex.getMessage());
 		 System.out.println(errors);
-		 return new ResponseEntity<Object>(errors, HttpStatus.BAD_REQUEST);
+		 return new ResponseEntity<Object>(errors, HttpStatus.NOT_FOUND);
 	}
+
+	// @Override
+	protected void onLoginInvalid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error)-> {
+		//String email = getParameter("email");	
+		
+		});
+		
+		//return onLoginInvalid((MethodArgumentNotValidException) errors,headers,status);
+	}
+
 }
