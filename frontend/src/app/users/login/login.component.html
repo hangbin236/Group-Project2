@@ -1,69 +1,54 @@
-<!-- <body onloadstart="checkAuthentication()">
-  <main class=" vh-100 bg-primary bg-gradient">-->
-
-
-<div class="container py-5 h-100">
-    <form #myForm="ngForm"
-          id="loginForm" 
-          action="dashboard.html"
-          method="get" 
-          class="row  h-80">
-      <div class="d-flex justify-content-center align-items-center ">
+<div class="bg-primary bg-gradient">
+  <div class="container py-5 h-100">
+      <form #loginForm (ngSubmit)="logInUser()" class="row  h-80">
+        <div 
+        class="d-flex justify-content-center align-items-center " 
+        >
         <div class="col-10 col-md-8 col-lg-6 col-xl-5">
-          <div class=" card bg-dark text-white" 
-               style="border-radius: 1rem;">
+          <div class=" card bg-dark text-white" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
               <div class="pb-5">
-                <div class="alert alert-warning mb-2" 
-                     role="alert" hidden>
-                </div>
+                
+                <div class="alert alert-warning mb-2" role="alert" hidden></div>
 
                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
 
                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                 <div class="form-outline form-white mb-4">
-                  <input type="email" 
-                         class="form-control form-control-lg"
-
-                         id="email"
-                         placeholder="Email Here..." 
-                         name="email"
-                         [(ngModel)]="user.email"                           
-                         required
-                         #usEmail="ngModel">
-                      <div *ngIf="!usEmail.valid && usEmail.touched" class="text-danger small">
-                        Email is required!
-                      </div>
-
-                         placeholder="Email Here..."
-                         required />
-
+                  <input 
+                  type="email" id="email" 
+                  name="email"  
+                  class="form-control form-control-lg" 
+                  [(ngModel)]="user.email" 
+                  #email="ngModel"
+                  placeholder="Email Here..."  required/>
                 </div>
+
                 <div class="form-outline form-white mb-4">
-                  <input type="password" 
-                         class="form-control form-control-lg"
-                         id="password"
-                         placeholder="Password Here..." 
-                         name="password"                
-                         [(ngModel)]="user.password" 
-                         required
-                         #usPassword="ngModel">
-                         <div *ngIf="!usPassword.valid && usPassword.touched" class="text-danger small">
-                          Password is required!
-                        </div>
+                  <input 
+                  type="password" id="password" 
+                  name="password"
+                  [(ngModel)]="user.password" 
+                  #password="ngModel"
+                  class="form-control form-control-lg" 
+                  placeholder="Password Here..." 
+                  required/>
                 </div>
-                <button class="btn btn-primary btn-lg px-5 mb-3" type="submit" (click)="loginValidation()"
-                      [disabled]="!myForm.valid">Login</button>
+
+                <button class="btn btn-outline-light btn-lg px-5 mb-3" type="submit">Login</button>
+
+                <p class="small mb-1"><a class="text-white-50" href="#!">Forgot password?</a></p>
               </div>
             </div>
+
+          
           </div>
         </div>
-      </div>
-    </form>
-  </div>
-  <!--</body> 
-  
-  outline-light
 
--->
+
+        </div>
+      </form>
+  </div>
+
+</div>
