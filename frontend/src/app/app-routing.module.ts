@@ -10,6 +10,18 @@ const defaultRoute: Route  = sessionStorage.getItem('auth') == null ?
   { path: '',   redirectTo: 'user-account', pathMatch: 'full' } ;
 
 const routes: Routes = [
+
+import { LogoutComponent } from './users/logout/logout.component';
+
+const routes: Routes = [
+  { path: "submit-reimbursement", component: SubmitReimbursementComponent },
+  { path: "view-my-reimbursements", component: ViewMyReimbursementsComponent },
+  { path: "view-all-reimbursements", component: ViewAllReimbursementsComponent },
+  { path: "employee-info", component: EmployeeInfoComponent },
+  { path: "login", component: LoginComponent },
+  { path: "logout", component: LogoutComponent }
+
+
   
   defaultRoute,    
   { path: 'login', component: LoginComponent},
