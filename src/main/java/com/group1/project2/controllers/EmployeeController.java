@@ -18,8 +18,8 @@ import com.group1.project2.models.pojo.EmployeePojo;
 import com.group1.project2.models.pojo.LoginForm;
 import com.group1.project2.service.MainService;
 
-@CrossOrigin
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/api")
 public class EmployeeController {
 	@Autowired
@@ -31,9 +31,10 @@ public class EmployeeController {
 	public EmployeePojo login(@RequestBody LoginForm login) {
 		EmployeePojo employee = null;
 		try {
-			employee = mainServ.validateLogin(login.getUsername(), login.getPassword());
-			System.out.println(login.getUsername());
+			employee = mainServ.validateLogin(login.getEmail(), login.getPassword());
+			System.out.println(login.getEmail());
 			System.out.println(login.getPassword());
+			System.out.println(employee.getEmail());
 		} catch (ApplicationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

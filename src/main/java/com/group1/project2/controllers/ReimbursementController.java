@@ -17,8 +17,8 @@ import com.group1.project2.models.pojo.ReimbursementForm;
 import com.group1.project2.models.pojo.ReimbursementPojo;
 import com.group1.project2.service.MainService;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class ReimbursementController {
 	@Autowired
