@@ -17,6 +17,8 @@ public class EmployeeImbursementMgmtDriver {
 		Javalin server = Javalin.create((config) -> config.enableCorsForAllOrigins());
 		server.start(7474);
 		
+		server.get("/", ctx -> ctx.result("Hello World"));
+		
 		//get all employee reimbursements by status
 		server.get("/reimbursements", ctx -> {
 			List<ReimbursementPojo> reimbursements = mainServ.getAllRequests();
@@ -88,8 +90,10 @@ public class EmployeeImbursementMgmtDriver {
 		
 		//on login, hold emp_id in session
 		server.post("/login", ctx -> {
+			
 			String email = ctx.formParam("email");
 			String password = ctx.formParam("password");
+			System.out.println(email);
 			EmployeePojo user = mainServ.validateLogin(email, password);
 			if (user == null) {
 				ctx.result("No match found. Please try again.").status(400);
