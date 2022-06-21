@@ -95,7 +95,7 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	public List<ReimbursementPojo> getAllRequestsByStatus(String status) throws ApplicationException {
-		List<ReimbursementEntity> allRbEntity = rbDao.findByStatus(status);
+		List<ReimbursementEntity> allRbEntity = rbDao.findByStatusOrderByIdAsc(status);
 		List<ReimbursementPojo> allRbPojo = new ArrayList<ReimbursementPojo>();
 		
 		for(ReimbursementEntity fetchedRbEntity : allRbEntity) {
@@ -111,7 +111,7 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	public List<ReimbursementPojo> getEmployeeRequests(int emp_id) throws ApplicationException {
-		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployeeId(emp_id);
+		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployeeIdOrderByIdAsc(emp_id);
 		List<ReimbursementPojo> allRbPojo = new ArrayList<ReimbursementPojo>();
 		
 		for(ReimbursementEntity fetchedRbEntity : allRbEntity) {
@@ -155,7 +155,7 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	public List<ReimbursementPojo> viewMyRequests(int empId, String status) throws ApplicationException {
-		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployeeIdAndStatus(empId, status);
+		List<ReimbursementEntity> allRbEntity = rbDao.findByEmployeeIdAndStatusOrderByIdAsc(empId, status);
 		List<ReimbursementPojo> allRbPojo = new ArrayList<ReimbursementPojo>();
 		
 		for(ReimbursementEntity fetchedRbEntity : allRbEntity) {

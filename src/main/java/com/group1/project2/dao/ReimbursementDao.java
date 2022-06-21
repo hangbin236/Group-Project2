@@ -9,7 +9,7 @@ import com.group1.project2.models.entity.ReimbursementEntity;
 
 @Repository
 public interface ReimbursementDao extends JpaRepository<ReimbursementEntity, Integer> {
-	List<ReimbursementEntity> findByStatus(String status);
-	List<ReimbursementEntity> findByEmployeeId(int id);
-	List<ReimbursementEntity> findByEmployeeIdAndStatus(int id, String status);
+	List<ReimbursementEntity> findByStatusOrderByIdAsc(String status);
+	List<ReimbursementEntity> findByEmployeeIdOrderByIdAsc(int id);
+	List<ReimbursementEntity> findByEmployeeIdAndStatusOrderByIdAsc(int id, String status);
 }

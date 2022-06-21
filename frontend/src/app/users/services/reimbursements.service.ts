@@ -14,16 +14,9 @@ export class ReimbursementsService {
   constructor(private http: HttpClient) { }
 
 
-  generateReimbursementRequest(): Observable<Reimbursement> {
+  generateReimbursementRequest(amount : number): Observable<Reimbursement> {
     // get user's reimbursement amount 
-    let amount = prompt("Please enter the amount to be Reimbursed", '0.00');
-
-    if(isNaN(parseFloat(amount as string))){
-        amount = prompt("Please enter a correct number for your amount ")
-    } 
-    // const formData = new FormData();
-    // formData.append("emp_id", userId);
-    // formData.append("amount", amount as string);
+    
     const rbForm = {
       "amount" : amount,
       "employee" : JSON.parse(sessionStorage.getItem("auth") as string)
@@ -41,7 +34,7 @@ export class ReimbursementsService {
     let reimbursements: Reimbursement[] = JSON.parse(
       sessionStorage.getItem("reimbursements") as string)
       .filter((item: any) => {
-          if (item.rb_status == "pending") {
+          if (item.status == "pending") {
               return item;
           }
       });
@@ -53,7 +46,7 @@ export class ReimbursementsService {
     let reimbursements: Reimbursement[] = JSON.parse(
       sessionStorage.getItem("reimbursements") as string)
       .filter((item: any) => {
-          if (item.rb_status == "resolved") {
+          if (item.status == "resolved") {
               return item;
           }
       });
@@ -65,7 +58,7 @@ export class ReimbursementsService {
     let reimbursements: Reimbursement[] = JSON.parse(
       sessionStorage.getItem("reimbursements") as string)
       .filter((item: any) => {
-          if (item.rb_status == "rejected") {
+          if (item.status == "rejected") {
               return item;
           }
       });
@@ -79,12 +72,8 @@ export class ReimbursementsService {
     return reimbursements
   }
 
-  // updates request in DB
-  updateReimbursementStatus(status: string, reimbursementId: any): Observable<any> {
-    const formData = new FormData();
-    formData.append("rb_id", reimbursementId);
-    formData.append("rb_status", status);
-    return this.http.put<any>(`${this.baseUrl}/reimbursement/status/update` , formData);
+  updateReimbursement(reimbursement : Reimbursement) {
+    return this.http.put<any>(`${this.baseUrl}/reimbursement` , reimbursement);
   }
 
     // get an Employee's list of Reimbursement request from DB

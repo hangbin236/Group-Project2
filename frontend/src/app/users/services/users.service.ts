@@ -22,13 +22,6 @@ export class UsersService {
   }
 
   updateEmployeeInfo(user: User): Observable<User> {
-    console.log("user form data")
-    // //get form data
-    // const formData = new FormData();
-    // formData.append("empID", `${user.emp_id}`);
-    // formData.append("fname", user.fname);
-    // formData.append("lname", user.lname);
-    // formData.append("email", user.email);
 
     // send http request
     return this.http.put<User>(`${this.baseUrl}/employee`, user);
