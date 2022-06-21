@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     lname: '',
     email: '',
 }
+  errorField : string = "";
 
   constructor(
     private userService: UsersService,
@@ -46,7 +47,10 @@ export class LoginComponent implements OnInit {
         this.authService.storeUserSession(response);
         this.router.navigateByUrl('user-account');
       },
-      (error) => console.log(error)   
+      (error) => {
+        console.log(error)   
+        this.errorField = "Email/Password incorrect!"
+      }
     );
   }
 

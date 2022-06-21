@@ -162,15 +162,19 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-white">Reimbursement System Dashboard</h1>
-                        <a
-                            id="requestBtn" 
-                            class="d-none d-sm-inline-block btn btn-sm btn-primary 
-                            text-white
-                            shadow-sm"
-                            (click)="generateReimbursementRequest()"
-                        >
-                            <i class="fas fa-download fa-sm text-white-50"></i> Generate Request
-                        </a>
+                        <div *ngIf="user.job_code == 100">
+                            <a
+                                data-toggle="modal" 
+                                data-target="#requestModal"
+                                id="requestBtn" 
+                                class="d-none d-sm-inline-block btn btn-sm btn-primary 
+                                text-white
+                                shadow-sm"
+                                
+                            >
+                                <i class="fas fa-download fa-sm text-white-50"></i> Generate Request
+                            </a>
+                        </div>
                     </div>
 
 
@@ -188,7 +192,7 @@
                                     <!-- Toggle buttons -->
              
                                     <div class="btn-group btn-group-toggle float-right" 
-                                        data-toggle="buttons" *ngIf="employeeReimbursements.length > 0">
+                                        data-toggle="buttons">
                                         <label class="btn btn-primary active btn-sm" (click)="getAllRequest()">
                                           <input                                             
                                             type="radio" name="options" 
@@ -256,7 +260,9 @@
                                                 <h4 class="small font-weight-bold">
                                                     Date: {{item.timestamp | date: 'short'}}
                                                 </h4>
-                                                <button class="btn btn-primary btn-sm" id="rb_${item.id}"                                                 
+                                                <button 
+                                                    data-toggle="modal" data-target="#requestUpdateModal"
+                                                    (click)="updateReimbursementItem(item)" class="btn btn-primary btn-sm" id="rb_${item.id}"                                                 
                                                 >Update</button>
                                             </div>
 
@@ -269,14 +275,16 @@
                                                 </h4>
                                                 <button 
                                                     type="button" class="btn btn-danger btn-sm" 
-                                                    (click)="updateReimbursementStatus('rejected', item.id)"
+                                                    (click)="updateReimbursementStatus('rejected', item)" 
+                                                    
                                                     id="rejected_${item.id}"
                                                 >
                                                     Reject
                                                 </button>
                                                 <button 
                                                     type="button" class="btn btn-success btn-sm" 
-                                                    (click)="updateReimbursementStatus('resolved', item.id)"
+                                                    (click)="updateReimbursementStatus('resolved', item)"
+                                                
                                                     id="rejected_${item.id}"
                                                 >
                                                     Resolve
@@ -337,6 +345,12 @@
                           
                                         <button
                                             class="btn btn-primary float-right"
+                                            data-toggle="modal" data-target="#employeePassModal"
+                                        >
+                                            Change Password
+                                        </button>
+                                        <button
+                                            class="btn btn-primary float-right"
                                             data-toggle="modal" data-target="#employeeModal"
                                         >
                                             Update
@@ -359,7 +373,7 @@
             <footer class="sticky-footer bg-dark">
                 <div class="container my- text-white">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Revature - Group 1 Project 1 2022</span>
+                        <span>Copyright &copy; Revature - Group 1 Project 2 2022</span>
                     </div>
                 </div>
             </footer>
@@ -500,10 +514,158 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
   </div>
-    
+<!-- New reimbursement request for loggedIn user -->
+<div  *ngIf="user != null" >
+
+    <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestModalLabel">Reimbursement Request Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="reqAmount" class="col-form-label">Enter an amount for your reimbursement</label>
+                    <input type="number" class="form-control" 
+                    id="reqAmount" name="reqAmount"
+                    [(ngModel)]="requestAmount"
+                    #reqAmount="ngModel"
+                    value="{{ requestAmount }}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" 
+                     data-dismiss="modal">Close</button>
+                    <button 
+                        type="button" class="btn btn-primary" 
+                        data-dismiss="modal"
+                        (click)="generateReimbursementRequest()"
+                        >
+                        Submit
+                    </button>
+                </div>
+                </form>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update existing reimbursement request -->
+<div  *ngIf="user.job_code == 100" >
+
+    <div class="modal fade" id="requestUpdateModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestModalLabel">Update Reimbursement Request Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="reqUpdateAmount" class="col-form-label">Enter an amount for your reimbursement</label>
+                    <input type="number" class="form-control" 
+                    id="reqUpdateAmount" name="reqUpdateAmount"
+                    [(ngModel)]="updateReimbursementData.amount"
+                    #reqUpdateAmount="ngModel"
+                    value="{{ updateReimbursementData.amount }}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" 
+                     data-dismiss="modal">Close</button>
+                    <button 
+                        type="button" class="btn btn-primary" 
+                        data-dismiss="modal"
+                        (click)="updateReimbursement()"
+                        >
+                        Submit
+                    </button>
+                </div>
+                </form>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Employee Password Modal -->
+<div id="EmpPassModal" *ngIf="user != null" >
+
+    <div class="modal fade" id="employeePassModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="requestModalLabel">Change Password</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="employeeInfoForm">
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="employeeID" name="empID" value="{{user.id}}" >
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="jobecode" name="jobcode" value="{{user.job_code}}" >
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="fname" value="{{user.fname}}">
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="lname" value="{{user.lname}}">
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="email" value="{{user.email}}">
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-form-label">Enter New Password</label>
+                  <input type="password" minLength="8" class="form-control" 
+                    id="password" name="password"
+                    [(ngModel)] = "user.password"
+                    value="">
+                </div>
+                <div class="form-group">
+                  <label for="passConfirmation" class="col-form-label">Confirm Password</label>
+                  <input type="password" minLength="8" class="form-control" 
+                    id="passConfirmation" name="passConfirmation"
+                    [(ngModel)] = "passwordConfirmation"
+                    value="">
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="passwordConfirmation != user.password">
+                    Passwords do not match!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" 
+                    (click)="getPersonalInfo()" data-dismiss="modal">Close</button>
+                    <button 
+                        type="button" class="btn btn-primary" 
+                        data-dismiss="modal"
+                        (click)="updateEmployeeInfo()"
+                        *ngIf="passwordConfirmation == user.password"
+                        >
+                        Submit
+                    </button>
+                </div>
+              </form>
+
+            </div>
+           
+          </div>
+        </div>
+    </div>
+</div>
 

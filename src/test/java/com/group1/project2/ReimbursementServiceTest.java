@@ -103,7 +103,7 @@ public class ReimbursementServiceTest {
 		ReimbursementPojo rbPojo1 = new ReimbursementPojo(10, "pending", 200, timestamp, empPojo1);
 		ReimbursementPojo rbPojo2 = new ReimbursementPojo(13, "pending", 150, timestamp, empPojo1);
 		
-		when(daoMock.findByStatus(status)).thenReturn(returnRbPendingEntities);		
+		when(daoMock.findByStatusOrderByIdAsc(status)).thenReturn(returnRbPendingEntities);		
 		
 		List<ReimbursementPojo> expectedRbPojos = new ArrayList<ReimbursementPojo>();
 		expectedRbPojos.add(rbPojo1);
@@ -148,7 +148,7 @@ public class ReimbursementServiceTest {
 		ReimbursementPojo rbPojo1 = new ReimbursementPojo(10, "pending", 200, timestamp, empPojo1);
 		ReimbursementPojo rbPojo2 = new ReimbursementPojo(11, "pending", 150, timestamp, empPojo1);
 		
-		when(daoMock.findByEmployeeId(empId)).thenReturn(returnRbEmpEntities);	
+		when(daoMock.findByEmployeeIdOrderByIdAsc(empId)).thenReturn(returnRbEmpEntities);	
 		
 		
 		List<ReimbursementPojo> expectedRbPojos = new ArrayList<ReimbursementPojo>();
@@ -252,7 +252,7 @@ public class ReimbursementServiceTest {
 		ReimbursementPojo rbPojo1 = new ReimbursementPojo(10, "pending", 200, timestamp, empPojo1);
 		ReimbursementPojo rbPojo2 = new ReimbursementPojo(11, "pending", 150, timestamp, empPojo1);
 		
-		when(daoMock.findByEmployeeIdAndStatus(empId, status)).thenReturn(returnRbEmpEntities);	
+		when(daoMock.findByEmployeeIdAndStatusOrderByIdAsc(empId, status)).thenReturn(returnRbEmpEntities);	
 		
 		
 		List<ReimbursementPojo> expectedRbPojos = new ArrayList<ReimbursementPojo>();

@@ -22,6 +22,15 @@ export class UserAccountComponent implements OnInit {
     lname: '',
     email: '',
   }
+  updateReimbursementData: Reimbursement = {
+    id: 0,
+    status: '',
+    amount: 0,
+    timestamp: 0,
+    employee : this.user
+  };
+  passwordConfirmation : string = "";
+  requestAmount : number = 0;
   userInfoPending: boolean = true;
   requestLoading: boolean = true;
   employeeReimbursements: Reimbursement[] = [];
@@ -116,7 +125,7 @@ export class UserAccountComponent implements OnInit {
   // work on back end response
   // experiment with front end 2way databinding
   generateReimbursementRequest(): void {
-    this.reimbursementService.generateReimbursementRequest()
+    this.reimbursementService.generateReimbursementRequest(this.requestAmount)
     .subscribe(
       (response) => {
         // when request is successful
@@ -161,10 +170,13 @@ export class UserAccountComponent implements OnInit {
     );
   }
 
-  // must change backend response to json
-  // must change backend response to json
-  updateReimbursementStatus(status: string, reimbursementId: any): void {
-    this.reimbursementService.updateReimbursementStatus(status, reimbursementId)
+  updateReimbursementItem (formItem: Reimbursement): void {
+    this.updateReimbursementData = formItem;
+  }
+
+
+  updateReimbursement (): void {
+    this.reimbursementService.updateReimbursement(this.updateReimbursementData)
     .subscribe(
       (response) => {
         // when request is successful
@@ -172,8 +184,8 @@ export class UserAccountComponent implements OnInit {
         // update data for DOM
         let newReq = JSON.parse(sessionStorage.getItem("reimbursements") as string)
                     .map((item: any) => {
-                        if (item.rb_id == reimbursementId) {
-                            item.rb_status = status;
+                        if (item.id == response.id) {
+                            item.amount = response.amount;
                             return item;
                         } else {
                             return item;
@@ -181,7 +193,40 @@ export class UserAccountComponent implements OnInit {
                     });
 
           // store new values
-          this.reimbursementService = newReq;
+          this.employeeReimbursements = newReq;
+          sessionStorage.setItem("reimbursements", JSON.stringify(newReq));
+
+      },
+      (err) => {
+        // must change backend response to json
+        console.log(err.message);
+
+      }
+    );
+  }
+
+  // must change backend response to json
+  // must change backend response to json
+  updateReimbursementStatus(status: string, reimbursement: Reimbursement): void {
+    reimbursement.status = status;
+    this.reimbursementService.updateReimbursement(reimbursement)
+    .subscribe(
+      (response) => {
+        // when request is successful
+        console.log(response);
+        // update data for DOM
+        let newReq = JSON.parse(sessionStorage.getItem("reimbursements") as string)
+                    .map((item: any) => {
+                        if (item.id == response.id) {
+                            item.status = response.status;
+                            return item;
+                        } else {
+                            return item;
+                        }
+                    });
+
+          // store new values
+          this.employeeReimbursements = newReq;
           sessionStorage.setItem("reimbursements", JSON.stringify(newReq));
 
       },
