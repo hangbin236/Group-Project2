@@ -9,7 +9,7 @@ import { Reimbursement } from '../models/reimbursement.model';
 })
 export class ReimbursementsService {
 
-  baseUrl: string = "http://localhost:8484/api";
+  baseUrl: string = "http://ec2-3-89-88-227.compute-1.amazonaws.com:8484/api";
 
   constructor(private http: HttpClient) { }
 

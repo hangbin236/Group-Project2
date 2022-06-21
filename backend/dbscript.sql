@@ -24,16 +24,16 @@ CREATE TABLE reimbursement_details(
     FOREIGN KEY (emp_id) REFERENCES employee_details(emp_id));
 
 INSERT INTO employee_details(password, job_code, fname, lname, email) 
-VALUES (crypt('password123',gen_salt('bf')), 100, 'John', 'Smith', 'jsmith@gmail.com');
+VALUES (password123, 100, 'John', 'Smith', 'jsmith@gmail.com');
 
 INSERT INTO employee_details(password, job_code, fname, lname, email) 
-VALUES (crypt('password123',gen_salt('bf')), 100, 'Mark', 'Johnson', 'mjohnson@gmail.com');
+VALUES (password123, 100, 'Mark', 'Johnson', 'mjohnson@gmail.com');
 
 INSERT INTO employee_details(password, job_code, fname, lname, email) 
-VALUES (crypt('password123',gen_salt('bf')), 100, 'Sally', 'Silverton', 'ss@gmail.com');
+VALUES (password123, 100, 'Sally', 'Silverton', 'ss@gmail.com');
 
 INSERT INTO employee_details(password, job_code, fname, lname, email) 
-VALUES (crypt('root',gen_salt('bf')), 200, 'Mr', 'Manager', 'mm@gmail.com');
+VALUES (password123, 200, 'Mr', 'Manager', 'mm@gmail.com');
 
 INSERT INTO reimbursement_details(rb_status, rb_amount, rb_timestamp, emp_id) 
 VALUES ('pending', 100.00, current_timestamp, 1);
