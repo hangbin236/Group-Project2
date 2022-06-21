@@ -273,22 +273,26 @@
                                                 <h4 class="small font-weight-bold">
                                                     Date: {{item.timestamp | date: 'short'}}
                                                 </h4>
-                                                <button 
-                                                    type="button" class="btn btn-danger btn-sm" 
-                                                    (click)="updateReimbursementStatus('rejected', item)" 
+                                                <div *ngIf="item.status == 'pending'">
+                                                    <button 
+                                                        type="button" class="btn btn-danger btn-sm" 
+                                                        (click)="updateReimbursementStatus('rejected', item)" 
+                                                        
+                                                        id="rejected_${item.id}"
+                                                    >
+                                                        Reject
+                                                    </button>
+                                                </div>
+                                                <div *ngIf="item.status == 'pending'">
+                                                    <button 
+                                                        type="button" class="btn btn-success btn-sm" 
+                                                        (click)="updateReimbursementStatus('resolved', item)"
                                                     
-                                                    id="rejected_${item.id}"
-                                                >
-                                                    Reject
-                                                </button>
-                                                <button 
-                                                    type="button" class="btn btn-success btn-sm" 
-                                                    (click)="updateReimbursementStatus('resolved', item)"
-                                                
-                                                    id="rejected_${item.id}"
-                                                >
-                                                    Resolve
-                                                </button>
+                                                        id="rejected_${item.id}"
+                                                    >
+                                                        Resolve
+                                                    </button>
+                                                </div>
                                             </div>
 
                                             <div class="dropdown-divider"></div>
